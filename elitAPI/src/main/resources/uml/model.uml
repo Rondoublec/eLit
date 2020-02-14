@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_AHHBwBmYEeqnIcnxS_a6dw" name="NewModel">
+  <packagedElement xmi:type="uml:Class" xmi:id="_yNbqQBmZEeqnIcnxS_a6dw" name="Departement" visibility="public"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_8Srb8BmZEeqnIcnxS_a6dw" name="Employee" visibility="public"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_B5LxcBmaEeqnIcnxS_a6dw" name="Job" visibility="public"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_GqztYBmaEeqnIcnxS_a6dw" name="JobHistory" visibility="public"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_PWYWYBmaEeqnIcnxS_a6dw" name="Task" visibility="public"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Z9dX4BmcEeqnIcnxS_a6dw" name="Location" visibility="public"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_vIADABmcEeqnIcnxS_a6dw" name="Country" visibility="public"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_zHqWgBmcEeqnIcnxS_a6dw" name="Region" visibility="public"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="__4WawBmcEeqnIcnxS_a6dw" name="departementsToEmployees" memberEnd="__4WawRmcEeqnIcnxS_a6dw __4gLwhmcEeqnIcnxS_a6dw" navigableOwnedEnd="__4gLwhmcEeqnIcnxS_a6dw">
+    <ownedEnd xmi:id="__4WawRmcEeqnIcnxS_a6dw" name="departements" type="_yNbqQBmZEeqnIcnxS_a6dw" association="__4WawBmcEeqnIcnxS_a6dw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__4gLwBmcEeqnIcnxS_a6dw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__4gLwRmcEeqnIcnxS_a6dw" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="__4gLwhmcEeqnIcnxS_a6dw" name="employees" type="_8Srb8BmZEeqnIcnxS_a6dw" aggregation="shared" association="__4WawBmcEeqnIcnxS_a6dw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="__4gLwxmcEeqnIcnxS_a6dw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="__4gLxBmcEeqnIcnxS_a6dw" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_Nn4F0BmdEeqnIcnxS_a6dw" memberEnd="_Nn4F0RmdEeqnIcnxS_a6dw _Nn4F1BmdEeqnIcnxS_a6dw" navigableOwnedEnd="_Nn4F1BmdEeqnIcnxS_a6dw">
+    <ownedEnd xmi:id="_Nn4F0RmdEeqnIcnxS_a6dw" name="departements" type="_yNbqQBmZEeqnIcnxS_a6dw" association="_Nn4F0BmdEeqnIcnxS_a6dw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Nn4F0hmdEeqnIcnxS_a6dw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Nn4F0xmdEeqnIcnxS_a6dw" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_Nn4F1BmdEeqnIcnxS_a6dw" name="locations" type="_Z9dX4BmcEeqnIcnxS_a6dw" aggregation="composite" association="_Nn4F0BmdEeqnIcnxS_a6dw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Nn8-UBmdEeqnIcnxS_a6dw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Nn8-URmdEeqnIcnxS_a6dw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_RVQ9kBmdEeqnIcnxS_a6dw" memberEnd="_RVQ9kRmdEeqnIcnxS_a6dw _RVRkohmdEeqnIcnxS_a6dw" navigableOwnedEnd="_RVRkohmdEeqnIcnxS_a6dw">
+    <ownedEnd xmi:id="_RVQ9kRmdEeqnIcnxS_a6dw" name="locations" type="_Z9dX4BmcEeqnIcnxS_a6dw" association="_RVQ9kBmdEeqnIcnxS_a6dw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RVRkoBmdEeqnIcnxS_a6dw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RVRkoRmdEeqnIcnxS_a6dw" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_RVRkohmdEeqnIcnxS_a6dw" name="countrys" type="_vIADABmcEeqnIcnxS_a6dw" aggregation="composite" association="_RVQ9kBmdEeqnIcnxS_a6dw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_RVRkoxmdEeqnIcnxS_a6dw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_RVRkpBmdEeqnIcnxS_a6dw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_SHwKcBmdEeqnIcnxS_a6dw" memberEnd="_SHwxgBmdEeqnIcnxS_a6dw _SHxYkBmdEeqnIcnxS_a6dw" navigableOwnedEnd="_SHxYkBmdEeqnIcnxS_a6dw">
+    <ownedEnd xmi:id="_SHwxgBmdEeqnIcnxS_a6dw" name="countrys" type="_vIADABmcEeqnIcnxS_a6dw" association="_SHwKcBmdEeqnIcnxS_a6dw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SHwxgRmdEeqnIcnxS_a6dw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SHwxghmdEeqnIcnxS_a6dw" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_SHxYkBmdEeqnIcnxS_a6dw" name="regions" type="_zHqWgBmcEeqnIcnxS_a6dw" aggregation="composite" association="_SHwKcBmdEeqnIcnxS_a6dw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_SHxYkRmdEeqnIcnxS_a6dw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_SHxYkhmdEeqnIcnxS_a6dw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_U6R8cBmdEeqnIcnxS_a6dw" memberEnd="_U6SjgBmdEeqnIcnxS_a6dw _U6SjgxmdEeqnIcnxS_a6dw" navigableOwnedEnd="_U6SjgxmdEeqnIcnxS_a6dw">
+    <ownedEnd xmi:id="_U6SjgBmdEeqnIcnxS_a6dw" name="jobHistorys" type="_GqztYBmaEeqnIcnxS_a6dw" association="_U6R8cBmdEeqnIcnxS_a6dw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_U6SjgRmdEeqnIcnxS_a6dw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_U6SjghmdEeqnIcnxS_a6dw" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_U6SjgxmdEeqnIcnxS_a6dw" name="departements" type="_yNbqQBmZEeqnIcnxS_a6dw" aggregation="composite" association="_U6R8cBmdEeqnIcnxS_a6dw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_U6TKkBmdEeqnIcnxS_a6dw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_U6TKkRmdEeqnIcnxS_a6dw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_WSyAcBmdEeqnIcnxS_a6dw" memberEnd="_WSyAcRmdEeqnIcnxS_a6dw _WSynghmdEeqnIcnxS_a6dw" navigableOwnedEnd="_WSynghmdEeqnIcnxS_a6dw">
+    <ownedEnd xmi:id="_WSyAcRmdEeqnIcnxS_a6dw" name="jobHistorys" type="_GqztYBmaEeqnIcnxS_a6dw" association="_WSyAcBmdEeqnIcnxS_a6dw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WSyngBmdEeqnIcnxS_a6dw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WSyngRmdEeqnIcnxS_a6dw" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_WSynghmdEeqnIcnxS_a6dw" name="jobs" type="_B5LxcBmaEeqnIcnxS_a6dw" aggregation="composite" association="_WSyAcBmdEeqnIcnxS_a6dw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WSyngxmdEeqnIcnxS_a6dw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WSynhBmdEeqnIcnxS_a6dw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_ZGoBEBmdEeqnIcnxS_a6dw" name="jobsToTasks" memberEnd="_ZGooIBmdEeqnIcnxS_a6dw _ZGpPMRmdEeqnIcnxS_a6dw" navigableOwnedEnd="_ZGpPMRmdEeqnIcnxS_a6dw">
+    <ownedEnd xmi:id="_ZGooIBmdEeqnIcnxS_a6dw" name="jobs" type="_B5LxcBmaEeqnIcnxS_a6dw" association="_ZGoBEBmdEeqnIcnxS_a6dw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZGooIRmdEeqnIcnxS_a6dw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZGpPMBmdEeqnIcnxS_a6dw" value="*"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_ZGpPMRmdEeqnIcnxS_a6dw" name="tasks" type="_PWYWYBmaEeqnIcnxS_a6dw" aggregation="shared" association="_ZGoBEBmdEeqnIcnxS_a6dw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZGp2QBmdEeqnIcnxS_a6dw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZGp2QRmdEeqnIcnxS_a6dw" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_dZoHUBmdEeqnIcnxS_a6dw" name="employeesToJobs" memberEnd="_dZoHURmdEeqnIcnxS_a6dw _dZoHVBmdEeqnIcnxS_a6dw" navigableOwnedEnd="_dZoHVBmdEeqnIcnxS_a6dw">
+    <ownedEnd xmi:id="_dZoHURmdEeqnIcnxS_a6dw" name="employees" type="_8Srb8BmZEeqnIcnxS_a6dw" association="_dZoHUBmdEeqnIcnxS_a6dw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dZoHUhmdEeqnIcnxS_a6dw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dZoHUxmdEeqnIcnxS_a6dw" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_dZoHVBmdEeqnIcnxS_a6dw" name="jobs" type="_B5LxcBmaEeqnIcnxS_a6dw" aggregation="shared" association="_dZoHUBmdEeqnIcnxS_a6dw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_dZoHVRmdEeqnIcnxS_a6dw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_dZoHVhmdEeqnIcnxS_a6dw" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_nIeLMBmdEeqnIcnxS_a6dw" memberEnd="_nIeLMRmdEeqnIcnxS_a6dw _nIeLNBmdEeqnIcnxS_a6dw" navigableOwnedEnd="_nIeLNBmdEeqnIcnxS_a6dw">
+    <ownedEnd xmi:id="_nIeLMRmdEeqnIcnxS_a6dw" name="jobHistorys" type="_GqztYBmaEeqnIcnxS_a6dw" association="_nIeLMBmdEeqnIcnxS_a6dw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nIeLMhmdEeqnIcnxS_a6dw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nIeLMxmdEeqnIcnxS_a6dw" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_nIeLNBmdEeqnIcnxS_a6dw" name="employees" type="_8Srb8BmZEeqnIcnxS_a6dw" aggregation="composite" association="_nIeLMBmdEeqnIcnxS_a6dw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_nIeLNRmdEeqnIcnxS_a6dw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_nIeLNhmdEeqnIcnxS_a6dw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_zOXmABmdEeqnIcnxS_a6dw" name="employeesToEmployees" memberEnd="_zOYNEBmdEeqnIcnxS_a6dw _zOYNExmdEeqnIcnxS_a6dw" navigableOwnedEnd="_zOYNExmdEeqnIcnxS_a6dw">
+    <ownedEnd xmi:id="_zOYNEBmdEeqnIcnxS_a6dw" name="employees" type="_8Srb8BmZEeqnIcnxS_a6dw" association="_zOXmABmdEeqnIcnxS_a6dw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zOYNERmdEeqnIcnxS_a6dw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zOYNEhmdEeqnIcnxS_a6dw" value="*"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_zOYNExmdEeqnIcnxS_a6dw" name="employees" type="_8Srb8BmZEeqnIcnxS_a6dw" aggregation="shared" association="_zOXmABmdEeqnIcnxS_a6dw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_zOY0IBmdEeqnIcnxS_a6dw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_zOY0IRmdEeqnIcnxS_a6dw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Model>

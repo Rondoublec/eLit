@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+        <link rel="stylesheet" type="text/css" href="../static/css/myStyle.css" th:href="@{/css/myStyle.css}" />
+        <script src="../static/js/myJS.js" th:src="@{/js/myJS.js}"></script>
+        <title>eLitSite - Modification des informations d'un spot</title>
+        <meta charset="UTF-8">
+    </head>
+
+    <body>
+    <!-- menu de l'application dans le header -->
+    <div th:insert="mon-header.html"></div>
+
+    <div class="container">
+
+        <div class="row" style="margin-top:100px;margin-bottom:10px;">
+
+            <div class="col-md-6">
+                <!-- Save Alert Messages -->
+                <div th:if="${saveSpot eq 'unsuccess'}">
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <strong>Erreur!</strong>saveSpot (spot-edit) - Spot non mis &agrave; jour.
+                    </div>
+                </div>
+                <div th:if="${saveSpot eq 'success'}">
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <strong>Success!</strong>saveSpot (spot-edit) - Spot mis &agrave; jour.
+                    </div>
+                </div>
+                <!-- Edit Alert Message -->
+                <div th:if="${status eq 'notfound'}">
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <strong>Erreur !</strong>status (spot-edit) - Spot invalide.
+                    </div>
+                </div>
+                <div th:if="${edit eq 'unsuccess'}">
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <strong>Erreur !</strong>edit (spot-edit) - Spot non r&eacute;cup&eacute;r&eacute;.
+                    </div>
+                </div>
+                <div th:if="${edit eq 'success'}">
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <strong>OK !</strong>edit (spot-edit) - Spot r&eacute;cup&eacute;r&eacute; avec succ&egrave;s.
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-offset-1 col-md-11">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <div th:if="${spot.idSpot != null}">
+                                Mettre &agrave; jour les informations de &nbsp; <b th:utext="${spot.nomSpot}">Mon spot</b>
+                                (derni&egrave;re mise &agrave; jour &nbsp; <span th:text="${spot.dateDeMiseAJour}"></span>)
+                            </div>
+                            <div th:if="${spot.idSpot == null}">
+                                Ajouter un nouveau spot
+                            </div>
+                        </h3>
+                    </div>
+
+                    <form th:object="${spot}" th:action="@{/spot/save}" action="#" method="post">
+                    <div class="panel-body">
+<!-- TODO DEBUT -->
+                        <div th:if="${membre != true}">
+                            <div class="col-md-12 alert-info" th:if="*{labelAmi == true}">
+                                <b>Spot labellis&eacute; "Ami de l&rsquo;escalade"</b></div>
+                            <div class="col-md-12 alert-warning " th:if="*{labelAmi != true}">
+                                Spot non labellis&eacute; </div>
+                        </div>
+                        <div th:if="${membre == true}">
+                            <div class="col-md-offset-6 col-md-6">
+                                <select type="select" class="form-control" size="1"  th:field="*{labelAmi}">
+                                    <option th:value="'false'" th:utext="'Non Labellisé Ami de l\'escalade'">
+                                        Non Labellisé Ami de l'escalade</option>
+                                    <option th:value="'true'"  th:utext="'Labellisation Ami de l\'escalade'">
+                                        Labellisation Ami de l'escalade</option>
+                                </select>
+                            </div>
+                            <div style="clear:both;display:block;height:10px;"></div>
+                        </div>
+<!-- TODO FIN -->
+                        <div class="col-md-12 table-bordered">
+                            <input type="hidden" th:field="*{idSpot}"/>
+                              <table class="table table-bordered table-responsive">
+                              <tr>
+                                  <th>Nom</th>
+                                  <td>
+                                      <input type="text" th:field="*{nomSpot}" class="form-control" placeholder="nomSpot"/>
+                                      <p th:if="${#fields.hasErrors('nomSpot')}" class="alert alert-danger alert-dismissible" role="alert" th:errors="*{nomSpot}"></p>
+                                      <div style="clear:both;display:block;height:10px;"></div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <th>Pr&eacute;sentation</th>
+                                  <td>
+                                      <textarea maxlength= "500" type="textarea" onkeyup="reste_a_saisir(this.maxLength,this.value);" th:field="*{presentation}" class="form-control" placeholder="presentation"></textarea>
+                                      <span id="caracteres">500</span> caractère(s) restant(s)
+                                      <p th:if="${#fields.hasErrors('presentation')}" class="alert alert-danger alert-dismissible" role="alert" th:errors="*{presentation}"></p>
+                                      <div style="clear:both;display:block;height:10px;"></div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <th>Code postal</th>
+                                  <td>
+                                      <input type="text" th:field="*{codePostalSpot}" class="form-control" placeholder="codePostalSpot"/>
+                                      <p th:if="${#fields.hasErrors('codePostalSpot')}" class="alert alert-danger alert-dismissible" role="alert" th:errors="*{codePostalSpot}"></p>
+                                      <div style="clear:both;display:block;height:10px;"></div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <th>Commune</th>
+                                  <td>
+                                      <input type="text" th:field="*{communeSpot}" class="form-control" placeholder="communeSpot"/>
+                                      <p th:if="${#fields.hasErrors('communeSpot')}" class="alert alert-danger alert-dismissible" role="alert" th:errors="*{communeSpot}"></p>
+                                      <div style="clear:both;display:block;height:10px;"></div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <th>Massif</th>
+                                  <td>
+                                      <input type="text" th:field="*{massif}" class="form-control" placeholder="massif"/>
+                                      <p th:if="${#fields.hasErrors('massif')}" class="alert alert-danger alert-dismissible" role="alert" th:errors="*{massif}"></p>
+                                      <div style="clear:both;display:block;height:10px;"></div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <th>Orientation</th>
+                                  <td>
+                                      <input type="text" th:field="*{orientation}" class="form-control" placeholder="orientation"/>
+                                      <p th:if="${#fields.hasErrors('orientation')}" class="alert alert-danger alert-dismissible" role="alert" th:errors="*{orientation}"></p>
+                                      <div style="clear:both;display:block;height:10px;"></div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <th>Roche</th>
+                                  <td>
+                                      <input type="text" th:field="*{roche}" class="form-control" placeholder="roche"/>
+                                      <p th:if="${#fields.hasErrors('roche')}" class="alert alert-danger alert-dismissible" role="alert" th:errors="*{roche}"></p>
+                                      <div style="clear:both;display:block;height:10px;"></div>
+                                      </td>
+                              </tr>
+                              <tr>
+                                  <th>Altitude Min. / Max.</th>
+                                  <td>
+                                      <input type="text" th:field="*{hauteurMin}" class="form-control" placeholder="hauteurMin"/>
+                                      <p th:if="${#fields.hasErrors('hauteurMin')}" class="alert alert-danger alert-dismissible" role="alert" th:errors="*{hauteurMin}"></p>
+                                      <div style="clear:both;display:block;height:5px;"></div>
+                                      <input type="text" th:field="*{hauteurMax}" class="form-control" placeholder="hauteurMax"/>
+                                      <p th:if="${#fields.hasErrors('hauteurMax')}" class="alert alert-danger alert-dismissible" role="alert" th:errors="*{hauteurMax}"></p>
+                                      <div style="clear:both;display:block;height:10px;"></div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <th>Cotation Min. / Max.</th>
+                                  <td>
+                                      <input type="text" th:field="*{cotationMin}" class="form-control" placeholder="cotationMin"/>
+                                      <p th:if="${#fields.hasErrors('cotationMin')}" class="alert alert-danger alert-dismissible" role="alert" th:errors="*{cotationMin}"></p>
+                                      <div style="clear:both;display:block;height:5px;"></div>
+                                      <input type="text" th:field="*{cotationMax}" class="form-control" placeholder="cotationMax"/>
+                                      <p th:if="${#fields.hasErrors('cotationMax')}" class="alert alert-danger alert-dismissible" role="alert" th:errors="*{cotationMax}"></p>
+                                      <div style="clear:both;display:block;height:10px;"></div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <th>Acc&egrave;s</th>
+                                  <td>
+                                      <input type="text" th:field="*{acces}" class="form-control" placeholder="acces"/>
+                                      <p th:if="${#fields.hasErrors('acces')}" class="alert alert-danger alert-dismissible" role="alert" th:errors="*{acces}"></p>
+                                      <div style="clear:both;display:block;height:10px;"></div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <th>Int&eacute;r&ecirc;t</th>
+                                  <td>
+                                      <input type="text" th:field="*{interet}" class="form-control" placeholder="interet"/>
+                                      <p th:if="${#fields.hasErrors('interet')}" class="alert alert-danger alert-dismissible" role="alert" th:errors="*{interet}"></p>
+                                      <div style="clear:both;display:block;height:10px;"></div>
+                              </td>
+                              </tr>
+<!--
+                              <tr>
+                                  <th>Labellis&eacute;</th>
+                                  <td>
+                                      <input type="text" th:field="*{labelAmi}" class="form-control" placeholder="labelAmi"/>
+                                      <div style="clear:both;display:block;height:10px;"></div>
+                                      </td>
+                              </tr>
+-->
+                              <tr>
+                                  <th>Cartographie</th>
+                                  <td>
+                                      <input type="text" th:field="*{cartographie}" class="form-control" placeholder="cartographie"/>
+                                      <p th:if="${#fields.hasErrors('cartographie')}" class="alert alert-danger alert-dismissible" role="alert" th:errors="*{cartographie}"></p>
+                                      <div style="clear:both;display:block;height:10px;"></div>
+                                  </td>
+                              </tr>
+                          </table>
+                          </div>
+                    </div>
+
+                    <div class="panel-footer">
+                        <a th:href="@{/spot}" class="btn btn-default">Retour &agrave; la liste des spots</a>
+                        <input type="submit" class="btn btn-default pull-right" value="Enregistrer">
+                    </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div th:insert="mon-footer.html"/>
+
+    </body>
+</html>

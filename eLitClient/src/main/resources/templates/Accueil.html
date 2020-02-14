@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mcommerce</title>
+
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.0.0-2/css/bootstrap.min.css" />
+
+</head>
+<body>
+
+
+<div class="container">
+
+    <h1>Application Elit</h1>
+
+    <div class="row">
+        <div th:each="ouvrage : ${ouvrages}" class="col-md-4 my-1">
+<!--            <a th:href="@{|/ouvrage/${ouvrage.getOuvrageId()}|}" >-->
+            <a th:href="@{|/details?ouvrageId=${ouvrage.getOuvrageId()}|}" >
+                <p th:text= "${ouvrage.getOuvrageReference()}"></p>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+
+<script type="text/javascript" src="webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
