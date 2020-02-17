@@ -8,10 +8,8 @@ import fr.rbo.elitapi.exceptions.NotFoundException;
 import fr.rbo.elitapi.repository.EmpruntRepository;
 import fr.rbo.elitapi.repository.EmpruntRepositoryInterface;
 import fr.rbo.elitapi.repository.OuvrageRepository;
-import fr.rbo.elitapi.repository.OuvrageRepositoryInterface;
 import fr.rbo.elitapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -132,7 +130,7 @@ public class EmpruntController {
         if (emprunt.isPresent()) {
             empruntRepository.deleteById(id);
         } else {
-            return "404 : Demande éronnée, emprunt inexistant";
+            return "Demande éronnée, emprunt inexistant";
         }
         emprunt = empruntRepository.findById(id);
         if (emprunt.isPresent()) {

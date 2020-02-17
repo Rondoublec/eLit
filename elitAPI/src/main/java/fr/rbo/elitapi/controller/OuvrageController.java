@@ -6,7 +6,6 @@ import fr.rbo.elitapi.exceptions.NotFoundException;
 import fr.rbo.elitapi.repository.OuvrageRepository;
 import fr.rbo.elitapi.repository.OuvrageRepositoryInterface;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;

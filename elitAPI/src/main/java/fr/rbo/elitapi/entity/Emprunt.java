@@ -13,7 +13,6 @@ import java.util.Date;
 
 @Entity
 public class Emprunt{
-
     private static final Logger log = LoggerFactory.getLogger(Emprunt.class);
 
         @Id
@@ -25,11 +24,8 @@ public class Emprunt{
         private User user;
         private Date empruntDateDebut;
         private Date empruntDateFin;
-        @Column(nullable = true)
         private Date empruntDateRetour;
-        @Column(nullable = true)
         private Date empruntDateProlongation;
-        @Column(nullable = true)
         private Date empruntDateRelance;
         private Boolean empruntProlongation;
         private Boolean empruntRendu;
