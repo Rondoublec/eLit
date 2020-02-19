@@ -25,12 +25,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.csrf().disable();
-        http.authorizeRequests().anyRequest().anonymous();
-//        http.authorizeRequests().antMatchers("/h2-console/**").permitAll();
-//        // All requests send to the Web Server request must be authenticated
-//        http.authorizeRequests().anyRequest().authenticated();
-//        // Use AuthenticationEntryPoint to authenticate user/password
-//        http.httpBasic().authenticationEntryPoint(authEntryPoint);
+//        http.authorizeRequests().anyRequest().anonymous();
+        http.authorizeRequests().antMatchers("/h2-console/**").permitAll();
+        // All requests send to the Web Server request must be authenticated
+        http.authorizeRequests().anyRequest().authenticated();
+        // Use AuthenticationEntryPoint to authenticate user/password
+        http.httpBasic().authenticationEntryPoint(authEntryPoint);
         http.headers().frameOptions().disable();
 
     }

@@ -1,45 +1,42 @@
 package fr.clientui.controller;
 
-import fr.clientui.beans.OuvrageBean;
-import fr.clientui.proxies.MicroserviceOuvragesProxy;
+import fr.clientui.beans.UserBean;
+import fr.clientui.proxies.APIProxy;
+import fr.clientui.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.hateoas.EntityModel;
-import org.springframework.hateoas.PagedModel;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import java.util.Collection;
-import java.util.List;
-
-import static jdk.nashorn.internal.objects.NativeArray.lastIndexOf;
-
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ClientController {
 
+    private final UserService userService;
+
+    public ClientController(UserService userService) {
+        this.userService = userService;
+    }
+
     @Autowired
-    MicroserviceOuvragesProxy mOuvragesProxy;
+    APIProxy apiProxy;
 
-    @RequestMapping(value={"/", "/Accueil"})
-    public String accueil(Model model){
-
-        List<OuvrageBean> ouvrages = mOuvragesProxy.findAll();
-        model.addAttribute("ouvrages", ouvrages);
-        return "Accueil";
+    @RequestMapping(value={"/", "/index"}, method = RequestMethod.GET)
+    public String index(Model model){
+        return "index";
     }
 
-    @RequestMapping(value = "/details", method = RequestMethod.GET)
-    public String details(@RequestParam("ouvrageId") int ouvrageId, Model model){
-
-        OuvrageBean ouvrage = mOuvragesProxy.findById(ouvrageId);
-        model.addAttribute("ouvrage", ouvrage);
-        return "Details";
+    @RequestMapping(value="/home", method = RequestMethod.GET)
+    public ModelAndView home(){
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserBean user = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject("userName", "Bienvenue " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+        //modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
+        modelAndView.setViewName("index");
+        return modelAndView;
     }
-
 }

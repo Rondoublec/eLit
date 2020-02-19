@@ -12,10 +12,10 @@ public class CustomErrorDecoder implements ErrorDecoder {
     public Exception decode(String invoqueur, Response reponse) {
 
         if(reponse.status() == 404 ) {
-            return new OuvrageNotFoundException("Erreur : ouvrage non trouvé ");
+            return new NotFoundException("Erreur : 404 ");
         }
         if(reponse.status() == 400 ) {
-            return new OuvrageBadRequestException("Erreur : Requête incorrecte ");
+            return new BadRequestException("Erreur : 400 ");
         }
 
         return defaultErrorDecoder.decode(invoqueur, reponse);

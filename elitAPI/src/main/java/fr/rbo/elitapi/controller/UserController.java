@@ -25,21 +25,21 @@ public class UserController {
         return users;
     }
 
-    @GetMapping(value = "/users/{id}")
+    @GetMapping(value = "/user/{id}")
     public User recupererUser (@PathVariable("id") Long id){
         User user = userRepository.findById(id).orElseThrow(() ->
                         new NotFoundException("Utilisateur inexistant"));
         return user;
     }
 
-    @GetMapping(value = "/users/email/{email}")
+    @GetMapping(value = "/user/email/{email}")
     public User recupererUserParEmail (@PathVariable("email") String email){
         User user = userRepository.findByEmail(email);
         if (user == null) throw new NotFoundException("Email utilisateur inexistant");
         return user;
     }
 
-    @PostMapping(value = "/users/")
+    @PostMapping(value = "/user/")
     @ResponseBody
     public User creerUser (@RequestBody User user){
         User newUser = userRepository.findById(user.getId()).orElse(new User());
