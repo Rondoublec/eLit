@@ -1,7 +1,7 @@
-package fr.clientui.controller;
+package fr.rbo.elitweb.controller;
 
-import fr.clientui.beans.UserBean;
-import fr.clientui.service.UserService;
+import fr.rbo.elitweb.beans.UserBean;
+import fr.rbo.elitweb.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -30,27 +30,28 @@ public class LoginController {
     @RequestMapping(value="/registration", method = RequestMethod.GET)
     public ModelAndView registration(){
         ModelAndView modelAndView = new ModelAndView();
-        UserBean user = new UserBean();
-        modelAndView.addObject("user", user);
+        UserBean userBean = new UserBean();
+        modelAndView.addObject("userBean", userBean);
         modelAndView.setViewName("registration");
         return modelAndView;
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public ModelAndView creerNouveauUser(@Valid UserBean user, BindingResult bindingResult) {
+    public ModelAndView creerNouveauUser(@Valid UserBean userBean, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
-        UserBean userExists = userService.findUserByEmail(user.getEmail());
-        if (userExists != null) {
-            bindingResult
-                    .rejectValue("email", "error.user",
-                            "There is already a user registered with the email provided");
+
+        if (!bindingResult.hasErrors()) {
+            UserBean userExists = userService.findUserByEmail(userBean.getEmail());
+            if (userExists != null) {
+                bindingResult.rejectValue("email", "error.user","Ce compte existe déjà");
+            }
         }
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("registration");
         } else {
-            userService.saveUser(user);
-            modelAndView.addObject("successMessage", "User has been registered successfully");
-            modelAndView.addObject("user", user);
+            userService.saveUser(userBean);
+            modelAndView.addObject("successMessage", "Le compte a été créé avec succès");
+            modelAndView.addObject("userBean", userBean);
             modelAndView.setViewName("registration");
         }
         return modelAndView;

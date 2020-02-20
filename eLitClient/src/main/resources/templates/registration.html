@@ -17,7 +17,7 @@
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
 				<form autocomplete="off" action="#" th:action="@{/registration}"
-					th:object="${user}" method="post" class="form-horizontal"
+					th:object="${userBean}" method="post" class="form-horizontal"
 					role="form">
 					<h2>Formulaire d'enregistrement</h2>
 					<div class="form-group">
@@ -59,7 +59,7 @@
 							<button type="submit" class="btn btn-primary btn-block">Valider l'enregistrement</button>
 						</div>
 					</div>
-					
+
 					<span th:utext="${successMessage}"></span>
 
 				</form>

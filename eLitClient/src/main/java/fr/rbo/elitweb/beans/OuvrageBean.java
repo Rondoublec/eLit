@@ -1,4 +1,4 @@
-package fr.clientui.beans;
+package fr.rbo.elitweb.beans;
 
 public class OuvrageBean {
 

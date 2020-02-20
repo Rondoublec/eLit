@@ -1,7 +1,7 @@
-package fr.clientui.controller;
+package fr.rbo.elitweb.controller;
 
-import fr.clientui.beans.OuvrageBean;
-import fr.clientui.proxies.APIProxy;
+import fr.rbo.elitweb.beans.OuvrageBean;
+import fr.rbo.elitweb.proxies.APIProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

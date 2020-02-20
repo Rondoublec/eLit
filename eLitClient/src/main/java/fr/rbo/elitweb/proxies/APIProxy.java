@@ -1,10 +1,10 @@
-package fr.clientui.proxies;
+package fr.rbo.elitweb.proxies;
 
 import feign.Param;
 import feign.RequestLine;
-import fr.clientui.beans.OuvrageBean;
-import fr.clientui.beans.RoleBean;
-import fr.clientui.beans.UserBean;
+import fr.rbo.elitweb.beans.OuvrageBean;
+import fr.rbo.elitweb.beans.RoleBean;
+import fr.rbo.elitweb.beans.UserBean;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 

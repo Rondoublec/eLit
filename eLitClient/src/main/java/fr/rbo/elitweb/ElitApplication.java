@@ -1,4 +1,4 @@
-package fr.clientui;
+package fr.rbo.elitweb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

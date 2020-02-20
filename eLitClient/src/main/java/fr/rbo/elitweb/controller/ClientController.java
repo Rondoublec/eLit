@@ -1,8 +1,8 @@
-package fr.clientui.controller;
+package fr.rbo.elitweb.controller;
 
-import fr.clientui.beans.UserBean;
-import fr.clientui.proxies.APIProxy;
-import fr.clientui.service.UserService;
+import fr.rbo.elitweb.beans.UserBean;
+import fr.rbo.elitweb.proxies.APIProxy;
+import fr.rbo.elitweb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -29,14 +29,14 @@ public class ClientController {
         return "index";
     }
 
-    @RequestMapping(value="/home", method = RequestMethod.GET)
-    public ModelAndView home(){
-        ModelAndView modelAndView = new ModelAndView();
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        UserBean user = userService.findUserByEmail(auth.getName());
-        modelAndView.addObject("userName", "Bienvenue " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
-        //modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
-        modelAndView.setViewName("index");
-        return modelAndView;
-    }
+//    @RequestMapping(value="/home", method = RequestMethod.GET)
+//    public ModelAndView home(){
+//        ModelAndView modelAndView = new ModelAndView();
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        UserBean user = userService.findUserByEmail(auth.getName());
+//        modelAndView.addObject("userName", "Bienvenue " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
+//        //modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
+//        modelAndView.setViewName("index");
+//        return modelAndView;
+//    }
 }

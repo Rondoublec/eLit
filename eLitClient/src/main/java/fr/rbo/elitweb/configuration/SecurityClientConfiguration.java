@@ -1,4 +1,4 @@
-package fr.clientui.configuration;
+package fr.rbo.elitweb.configuration;
 
 import feign.Contract;
 import feign.auth.BasicAuthRequestInterceptor;

@@ -1,6 +1,6 @@
-package fr.clientui.configuration;
+package fr.rbo.elitweb.configuration;
 
-import fr.clientui.exceptions.CustomErrorDecoder;
+import fr.rbo.elitweb.exceptions.CustomErrorDecoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

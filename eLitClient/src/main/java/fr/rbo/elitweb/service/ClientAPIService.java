@@ -1,10 +1,10 @@
-package fr.clientui.service;
+package fr.rbo.elitweb.service;
 
-import fr.clientui.beans.RoleBean;
-import fr.clientui.beans.UserBean;
-import fr.clientui.exceptions.APIException;
-import fr.clientui.exceptions.NotFoundException;
-import fr.clientui.proxies.APIProxy;
+import fr.rbo.elitweb.beans.RoleBean;
+import fr.rbo.elitweb.beans.UserBean;
+import fr.rbo.elitweb.exceptions.APIException;
+import fr.rbo.elitweb.exceptions.NotFoundException;
+import fr.rbo.elitweb.proxies.APIProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
-package fr.clientui.service;
+package fr.rbo.elitweb.service;
 
-import fr.clientui.beans.UserBean;
+import fr.rbo.elitweb.beans.UserBean;
 
 public interface UserService {
     public UserBean findUserByEmail(String email);

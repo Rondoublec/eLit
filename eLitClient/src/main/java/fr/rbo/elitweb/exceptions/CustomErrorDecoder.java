@@ -1,4 +1,4 @@
-package fr.clientui.exceptions;
+package fr.rbo.elitweb.exceptions;
 
 import feign.Response;
 import feign.codec.ErrorDecoder;
