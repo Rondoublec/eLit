@@ -42,8 +42,17 @@ public class OuvrageRepositoryImpl implements OuvrageRepositoryInterface {
             }
         } catch (NullPointerException e) {}
         try {
+            if (!ouvrageCherche.getOuvrageResume().isEmpty()) {
+                predicates.add(cb.like(ouvrage.get("ouvrageResume"), "%" + ouvrageCherche.getOuvrageResume() + "%"));
+            }
+        } catch (NullPointerException e) {}
+        try {
             if (!ouvrageCherche.getOuvrageQuantite().isEmpty()) {
-                predicates.add(cb.equal(ouvrage.get("ouvrageQuantite"), ouvrageCherche.getOuvrageQuantite()));
+                if (ouvrageCherche.getOuvrageQuantite().equals("1")) {
+                    predicates.add(cb.greaterThan(ouvrage.get("ouvrageQuantite"), 0));
+                } else {
+                    predicates.add(cb.equal(ouvrage.get("ouvrageQuantite"), ouvrageCherche.getOuvrageQuantite()));
+                }
             }
         } catch (NullPointerException e) {}
 

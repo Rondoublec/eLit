@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">-->
-    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.0.0-2/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../webjars/bootstrap/4.0.0-2/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="../static/css/myStyle.css" th:href="@{/css/myStyle.css}" />
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
+    <script src="../webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
     <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
     <title>eLitSite - Liste des ouvrages</title>
     <meta charset="UTF-8">
@@ -25,7 +25,7 @@
             </div>
             <div th:if="${status eq 'notfound'}">
                 <div class="alert alert-danger alert-dismissible" role="alert">
-                    <strong>Erreur !</strong> - Ouvrage invalide.
+                    <strong>Erreur !</strong> - Pas de r&eacute;sultat.
                 </div>
             </div>
         </div>
@@ -39,13 +39,23 @@
                     <th>Titre</th>
                     <th>Auteur</th>
                     <th>Style</th>
-                    <th>text Libre</th>
+                    <th>Dispo</th>
+                    <th>Text Libre</th>
                 </tr>
                 <tr>
                     <th><button type="submit" class="btn btn-primary">Rechercher</button></th>
                     <th><input type="text" class="form-control" th:field="*{ouvrageTitre}" id="ouvrageTitre"  /></th>
                     <th><input type="text" class="form-control" th:field="*{ouvrageAuteur}" id="ouvrageAuteur"  /></th>
                     <th><input type="text" class="form-control" th:field="*{ouvrageStyle}" id="ouvrageStyle"  /></th>
+                    <th>
+<!--                        <input type="checkbox"  class="form-control" name="labelAmi" th:checked="*{labelAmi}"/>-->
+                        <select type="select"  class="form-control"  size="1"  th:field="*{ouvrageQuantite}">
+                            <option th:value="''" th:text="Tout">Tout</option>
+                            <option th:value="'1'" th:text="Oui">Oui</option>
+                            <option th:value="'0'" th:text="Non">Non</option>
+                        </select>
+                    </th>
+
                     <th><input type="text" class="form-control" th:field="*{ouvrageResume}" id="ouvrageResume"  /></th>
                 </tr>
                 </thead>

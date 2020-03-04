@@ -2,6 +2,7 @@ package fr.rbo.elitweb.proxies;
 
 import feign.Param;
 import feign.RequestLine;
+import fr.rbo.elitweb.beans.EmpruntBean;
 import fr.rbo.elitweb.beans.OuvrageBean;
 import fr.rbo.elitweb.beans.RoleBean;
 import fr.rbo.elitweb.beans.UserBean;
@@ -18,6 +19,21 @@ public interface APIProxy {
 
     @RequestLine("GET /ouvrage/{id}")
     OuvrageBean findById(@Param("id") int id);
+
+    @RequestLine("POST /ouvrages/recherche")
+    List<OuvrageBean> findByCriteria(@RequestBody OuvrageBean ouvrage);
+
+    @RequestLine("GET /emprunts")
+    List<EmpruntBean> findAllEmprunts();
+
+    @RequestLine("GET /emprunt/{id}")
+    EmpruntBean findEmpruntById(@Param("id") int id);
+
+    @RequestLine("POST /emprunts/recherche")
+    List<EmpruntBean> rechercheEmprunt(@RequestBody EmpruntBean emprunt);
+
+    @RequestLine("PUT /emprunt/plus/{id}")
+    EmpruntBean findEmpruntById(@Param("id") int id, @RequestBody EmpruntBean emprunt);
 
     @RequestLine("GET /user/{id}")
     UserBean recupererUnUser(@Param("id") Long id);

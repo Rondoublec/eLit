@@ -1,6 +1,7 @@
 package fr.rbo.elitweb.controller;
 
 import fr.rbo.elitweb.beans.OuvrageBean;
+import fr.rbo.elitweb.exceptions.NotFoundException;
 import fr.rbo.elitweb.proxies.APIProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 @Controller
 public class OuvragesController {
@@ -21,9 +25,12 @@ public class OuvragesController {
 
     @RequestMapping(value="/ouvrages", method = RequestMethod.GET)
     public String Ouvrages(Model model, HttpSession httpSession){
-        OuvrageBean ouvrageCriteres = new OuvrageBean();
-        List<OuvrageBean> ouvrages = apiProxy.findAll();
-        model.addAttribute("status", "/ouvrages");
+        OuvrageBean ouvrageCriteres =new OuvrageBean();
+        List<OuvrageBean> ouvrages = null;
+        try {
+            ouvrages = apiProxy.findByCriteria(ouvrageCriteres);
+            model.addAttribute("status", "/ouvrages/recherche");
+        } catch(NotFoundException e){ model.addAttribute("status", "notfound"); }
         model.addAttribute("ouvrageCriteres", ouvrageCriteres);
         model.addAttribute("ouvrages", ouvrages);
         return "recherche-ouvrages-list";
@@ -32,8 +39,11 @@ public class OuvragesController {
     public String OuvragesRecherche (Model model,
                                      @ModelAttribute("ouvrageCriteres") OuvrageBean ouvrageCriteres,
                                      HttpSession httpSession) {
-        List<OuvrageBean> ouvrages = apiProxy.findAll();
-        model.addAttribute("status", "/ouvrages/recherche");
+        List<OuvrageBean> ouvrages = null;
+        try {
+            ouvrages = apiProxy.findByCriteria(ouvrageCriteres);
+            model.addAttribute("status", "/ouvrages/recherche");
+        } catch(NotFoundException e){ model.addAttribute("status", "notfound"); }
         model.addAttribute("ouvrageCriteres", ouvrageCriteres);
         model.addAttribute("ouvrages", ouvrages);
         return "recherche-ouvrages-list";
