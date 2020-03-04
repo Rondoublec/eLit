@@ -12,10 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 @Controller
 public class OuvragesController {
@@ -28,7 +25,7 @@ public class OuvragesController {
         OuvrageBean ouvrageCriteres =new OuvrageBean();
         List<OuvrageBean> ouvrages = null;
         try {
-            ouvrages = apiProxy.findByCriteria(ouvrageCriteres);
+            ouvrages = apiProxy.rechercheOuvrage(ouvrageCriteres);
             model.addAttribute("status", "/ouvrages/recherche");
         } catch(NotFoundException e){ model.addAttribute("status", "notfound"); }
         model.addAttribute("ouvrageCriteres", ouvrageCriteres);
@@ -41,7 +38,7 @@ public class OuvragesController {
                                      HttpSession httpSession) {
         List<OuvrageBean> ouvrages = null;
         try {
-            ouvrages = apiProxy.findByCriteria(ouvrageCriteres);
+            ouvrages = apiProxy.rechercheOuvrage(ouvrageCriteres);
             model.addAttribute("status", "/ouvrages/recherche");
         } catch(NotFoundException e){ model.addAttribute("status", "notfound"); }
         model.addAttribute("ouvrageCriteres", ouvrageCriteres);
@@ -50,7 +47,7 @@ public class OuvragesController {
     }
     @RequestMapping(value = {"/details", "/ouvrage/details"}, method = RequestMethod.GET)
     public String details(@RequestParam("ouvrageId") int ouvrageId, Model model){
-        OuvrageBean ouvrage = apiProxy.findById(ouvrageId);
+        OuvrageBean ouvrage = apiProxy.findOuvrageById(ouvrageId);
         model.addAttribute("ouvrage", ouvrage);
         return "ouvrage-details";
     }

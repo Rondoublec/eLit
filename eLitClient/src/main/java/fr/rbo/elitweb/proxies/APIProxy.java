@@ -18,10 +18,10 @@ public interface APIProxy {
     List<OuvrageBean> findAll();
 
     @RequestLine("GET /ouvrage/{id}")
-    OuvrageBean findById(@Param("id") int id);
+    OuvrageBean findOuvrageById(@Param("id") int id);
 
     @RequestLine("POST /ouvrages/recherche")
-    List<OuvrageBean> findByCriteria(@RequestBody OuvrageBean ouvrage);
+    List<OuvrageBean> rechercheOuvrage(@RequestBody OuvrageBean ouvrage);
 
     @RequestLine("GET /emprunts")
     List<EmpruntBean> findAllEmprunts();
@@ -29,11 +29,17 @@ public interface APIProxy {
     @RequestLine("GET /emprunt/{id}")
     EmpruntBean findEmpruntById(@Param("id") int id);
 
-    @RequestLine("POST /emprunts/recherche")
-    List<EmpruntBean> rechercheEmprunt(@RequestBody EmpruntBean emprunt);
+    @RequestLine("POST /emprunts/recherche/criteres")
+    List<EmpruntBean> rechercheEmpruntCriteres(@RequestBody EmpruntBean emprunt);
+    @RequestLine("POST /emprunts/recherche/rendu")
+    List<EmpruntBean> rechercheEmpruntRendu(@RequestBody EmpruntBean emprunt);
+    @RequestLine("POST /emprunts/recherche/prolonge")
+    List<EmpruntBean> rechercheEmpruntProlonge(@RequestBody EmpruntBean emprunt);
+    @RequestLine("POST /emprunts/recherche/relance")
+    List<EmpruntBean> rechercheEmpruntRelance(@RequestBody EmpruntBean emprunt);
 
     @RequestLine("PUT /emprunt/plus/{id}")
-    EmpruntBean findEmpruntById(@Param("id") int id, @RequestBody EmpruntBean emprunt);
+    EmpruntBean prolongeEmpruntById(@Param("id") int id, @RequestBody EmpruntBean emprunt);
 
     @RequestLine("GET /user/{id}")
     UserBean recupererUnUser(@Param("id") Long id);
