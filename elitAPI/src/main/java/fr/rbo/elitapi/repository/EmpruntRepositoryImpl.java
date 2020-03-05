@@ -28,7 +28,7 @@ public class EmpruntRepositoryImpl implements EmpruntRepositoryInterface {
 
         try {
             if (!empruntCherche.getUser().getEmail().isEmpty()) {
-                predicates.add(cb.like(emprunt.get("user").get("email"), "%" + empruntCherche.getUser().getEmail() + "%"));
+                predicates.add(cb.equal(emprunt.get("user").get("email"), empruntCherche.getUser().getEmail()));
             }
         } catch (NullPointerException e) {}
         try {

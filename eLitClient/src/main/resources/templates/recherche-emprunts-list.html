@@ -83,9 +83,6 @@
                             <option th:value=false th:text="Non">Non</option>
                         </select>
                     </th>
-                    <!--                    <th>Rendu <input type="checkbox"  class="form-control" name="empruntRendu" th:checked="*{empruntRendu}"/></th>-->
-                    <!--                    <th>Prolong&eacute; <input type="checkbox"  class="form-control" name="empruntProlongation" th:checked="*{empruntProlongation}"/></th>-->
-                    <!--                    <th>En retard <input type="checkbox"  class="form-control" name="empruntRelance" th:checked="*{empruntRelance}"/></th>-->
                 </tr>
                 </thead>
             </table>
@@ -116,7 +113,8 @@
                     </tr>
                     <tr th:each="emprunt : ${emprunts}">
                         <td><a th:href="@{|/emprunt/details?empruntId=${emprunt.empruntId}|}" title="Afficher" data-toggle="tooltip" data-placement="top">
-                            <span th:text="${emprunt.ouvrage.ouvrageTitre}"></span></a>
+                            <img th:alt="${emprunt.ouvrage.ouvrageTitre}" th:src="${emprunt.ouvrage.ouvrageLienImage}" width="15%"></a>
+                            <span th:text="${emprunt.ouvrage.ouvrageTitre}"></span>
                         </td>
                         <td th:text="${emprunt.empruntDateDebut}"></td>
                         <td th:text="${emprunt.empruntDateFin}"></td>

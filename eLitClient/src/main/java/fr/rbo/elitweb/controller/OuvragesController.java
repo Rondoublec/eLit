@@ -1,6 +1,5 @@
 package fr.rbo.elitweb.controller;
 
-import fr.rbo.elitweb.beans.EmpruntBean;
 import fr.rbo.elitweb.beans.OuvrageBean;
 import fr.rbo.elitweb.exceptions.NotFoundException;
 import fr.rbo.elitweb.proxies.APIProxy;
@@ -59,7 +58,7 @@ public class OuvragesController {
             return "redirect:/ouvrages";
         }
         model.addAttribute("ouvrage", ouvrage);
-        return "ouvrage-details";
+        return "details-ouvrage";
     }
 
 }

@@ -22,6 +22,7 @@ public class Ouvrage {
     private String ouvrageResume;
     private String ouvrageLocalisation;
     private String ouvrageQuantite;
+    private String ouvrageLienImage;
 
     public Long getOuvrageId() {
         return ouvrageId;
@@ -86,5 +87,14 @@ public class Ouvrage {
     public void setOuvrageQuantite(String ouvrageQuantite) {
         this.ouvrageQuantite = ouvrageQuantite;
     }
+
+    public String getOuvrageLienImage() {
+        return ouvrageLienImage;
+    }
+
+    public void setOuvrageLienImage(String ouvrageLienImage) {
+        this.ouvrageLienImage = ouvrageLienImage;
+    }
+
 
 }

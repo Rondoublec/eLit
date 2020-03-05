@@ -68,7 +68,7 @@ public class EmpruntController {
             return "redirect:/mesemprunts";
         }
         model.addAttribute("emprunt", emprunt);
-        return "emprunt-details";
+        return "details-emprunt";
     }
     @RequestMapping(value = "/emprunt/plus", method = RequestMethod.GET)
     public String plus(@RequestParam("empruntId") int empruntId, Model model

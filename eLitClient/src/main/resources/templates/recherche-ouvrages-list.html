@@ -95,9 +95,9 @@
                             <td colspan="4" align="center">Auncun ouvrage trouvé !!!</td>
                         </tr>
                         <tr th:each="ouvrage : ${ouvrages}">
-                            <!--   th:href="@{/ouvrage/details?ouvrageId={ouvrageId}(ouvrageId=${ouvrage.ouvrageId})}" fonctionne aussi-->
                             <td><a th:href="@{|/ouvrage/details?ouvrageId=${ouvrage.ouvrageId}|}" title="Afficher" data-toggle="tooltip" data-placement="top">
-                                <span th:text="${ouvrage.ouvrageTitre}"></span></a>
+                                <img th:alt="${ouvrage.ouvrageTitre}" th:src="${ouvrage.ouvrageLienImage}" width="8%"></a>
+                                <span th:text="${ouvrage.ouvrageTitre}"></span>
                             </td>
                             <td th:text="${ouvrage.ouvrageAuteur}"></td>
                             <td th:text="${ouvrage.ouvrageStyle}"></td>

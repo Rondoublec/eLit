@@ -10,6 +10,7 @@ public class OuvrageBean {
     private String ouvrageResume;
     private String ouvrageLocalisation;
     private String ouvrageQuantite;
+    private String ouvrageLienImage;
 
     public OuvrageBean() {
     }
@@ -78,6 +79,14 @@ public class OuvrageBean {
         this.ouvrageQuantite = ouvrageQuantite;
     }
 
+    public String getOuvrageLienImage() {
+        return ouvrageLienImage;
+    }
+
+    public void setOuvrageLienImage(String ouvrageLienImage) {
+        this.ouvrageLienImage = ouvrageLienImage;
+    }
+
     @Override
     public String toString() {
         return "OuvrageBean{" +
@@ -89,6 +98,7 @@ public class OuvrageBean {
                 ", ouvrageResume='" + ouvrageResume + '\'' +
                 ", ouvrageLocalisation='" + ouvrageLocalisation + '\'' +
                 ", ouvrageQuantite='" + ouvrageQuantite + '\'' +
+                ", ouvrageLienImage='" + ouvrageLienImage + '\'' +
                 '}';
     }
 
