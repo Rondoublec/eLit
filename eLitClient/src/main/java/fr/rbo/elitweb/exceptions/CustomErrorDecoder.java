@@ -11,6 +11,9 @@ public class CustomErrorDecoder implements ErrorDecoder {
     @Override
     public Exception decode(String invoqueur, Response reponse) {
 
+        if(reponse.status() == 406 ) {
+            return new NotAcceptableException("Erreur : 406 ");
+        }
         if(reponse.status() == 404 ) {
             return new NotFoundException("Erreur : 404 ");
         }

@@ -23,9 +23,9 @@
                     <strong>Erreur !</strong> - Action non autoris&eacute;e. <Strong>Pirate !</Strong>
                 </div>
             </div>
-            <div th:if="${status eq 'notfound'}">
-                <div class="alert alert-danger alert-dismissible" role="alert">
-                    <strong>Erreur !</strong> - Pas de r&eacute;sultat.
+            <div th:if="${status eq 'notFound'}">
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <strong>Echec !</strong> - D&eacute;tails non disponibles ou identifiant d'ouvragee inexistant.
                 </div>
             </div>
         </div>
@@ -46,9 +46,20 @@
                     <th><button type="submit" class="btn btn-primary">Rechercher</button></th>
                     <th><input type="text" class="form-control" th:field="*{ouvrageTitre}" id="ouvrageTitre"  /></th>
                     <th><input type="text" class="form-control" th:field="*{ouvrageAuteur}" id="ouvrageAuteur"  /></th>
-                    <th><input type="text" class="form-control" th:field="*{ouvrageStyle}" id="ouvrageStyle"  /></th>
                     <th>
-<!--                        <input type="checkbox"  class="form-control" name="labelAmi" th:checked="*{labelAmi}"/>-->
+                        <select type="select"  class="form-control"  size="1"  th:field="*{ouvrageStyle}">
+                            <option th:value="''" th:text="Tout">Tout</option>
+                            <option th:value="'Amour'" th:text="Amour">Amour</option>
+                            <option th:value="'BD'" th:text="BD">BD</option>
+                            <option th:value="'Comique'" th:text="Comique">Comique</option>
+                            <option th:value="'Fantastique'" th:text="Fantastique">Fantastique</option>
+                            <option th:value="'Policier'" th:text="Policier">Policier</option>
+                            <option th:value="'Roman-graphique'" th:text="Roman-graphique">Roman-graphique</option>
+                            <option th:value="'Science-fiction'" th:text="Science-fiction">Science-fiction</option>
+                            <option th:value="'Thriller'" th:text="Thriller">Thriller</option>
+                        </select>
+                    </th>
+                    <th>
                         <select type="select"  class="form-control"  size="1"  th:field="*{ouvrageQuantite}">
                             <option th:value="''" th:text="Tout">Tout</option>
                             <option th:value="'1'" th:text="Oui">Oui</option>

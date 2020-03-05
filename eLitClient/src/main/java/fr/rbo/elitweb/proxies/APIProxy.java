@@ -39,7 +39,7 @@ public interface APIProxy {
     List<EmpruntBean> rechercheEmpruntRelance(@RequestBody EmpruntBean emprunt);
 
     @RequestLine("PUT /emprunt/plus/{id}")
-    EmpruntBean prolongeEmpruntById(@Param("id") int id, @RequestBody EmpruntBean emprunt);
+    EmpruntBean prolongeEmpruntById(@Param("id") int id);
 
     @RequestLine("GET /user/{id}")
     UserBean recupererUnUser(@Param("id") Long id);
