@@ -16,13 +16,19 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="/ouvrages">Les ouvrages</a>
+                    <a sec:authorize="isAuthenticated()" class="nav-link" href="/ouvrages">Les ouvrages</a>
                 </li>
                 <li class="nav-item">
                     <a sec:authorize="isAuthenticated()" class="nav-link" href="/mesemprunts">Mes emprunts</a>
                 </li>
                 <li class="nav-item">
                     <a sec:authorize="isAuthenticated()" class="nav-link" href="/adm1n">...</a>
+                </li>
+                <li class="nav-item">
+                    <a sec:authorize="isAnonymous()" class="nav-link" href="/bibliotheques">Choisir une biblioth&egrave;que</a>
+                </li>
+                <li class="nav-item">
+                    <a sec:authorize="isAuthenticated()" class="nav-link" href="/bibliotheques">Changer de biblioth&egrave;que</a>
                 </li>
             </ul>
             <ul class="navbar-nav navbar-right">

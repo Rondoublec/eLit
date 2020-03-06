@@ -27,6 +27,11 @@ public class OuvrageRepositoryImpl implements OuvrageRepositoryInterface {
         List<Predicate> predicates = new ArrayList<>();
 
         try {
+            if (!ouvrageCherche.getBibliotheque().getBibliothequeId().toString().isEmpty()) {
+                predicates.add(cb.equal(ouvrage.get("bibliotheque").get("bibliothequeId"), ouvrageCherche.getBibliotheque().getBibliothequeId()));
+            }
+        } catch (NullPointerException e) {}
+        try {
             if (!ouvrageCherche.getOuvrageTitre().isEmpty()) {
                 predicates.add(cb.like(ouvrage.get("ouvrageTitre"), "%" + ouvrageCherche.getOuvrageTitre() + "%"));
             }

@@ -100,6 +100,7 @@
                     <thead>
                     <tr class="btn-default">
                         <th>Titre</th>
+                        <th>Lieu d'emprunt</th>
                         <th>Date d'emprunt</th>
                         <th>Date de fin initiale</th>
                         <th>Date de fin Prolong&eacute;e</th>
@@ -109,13 +110,14 @@
                     </thead>
                     <tbody>
                     <tr th:if="${#lists.isEmpty(emprunts)}" class="alert alert-info">
-                        <td colspan="6" align="center">Auncun emprunt trouvé !!!</td>
+                        <td colspan="7" align="center">Auncun emprunt trouvé !!!</td>
                     </tr>
                     <tr th:each="emprunt : ${emprunts}">
                         <td><a th:href="@{|/emprunt/details?empruntId=${emprunt.empruntId}|}" title="Afficher" data-toggle="tooltip" data-placement="top">
                             <img th:alt="${emprunt.ouvrage.ouvrageTitre}" th:src="${emprunt.ouvrage.ouvrageLienImage}" width="15%"></a>
                             <span th:text="${emprunt.ouvrage.ouvrageTitre}"></span>
                         </td>
+                        <td th:text="${emprunt.ouvrage.bibliotheque.bibliothequeNom}" th:title="${emprunt.ouvrage.bibliotheque.infos()}"></td>
                         <td th:text="${#dates.format(emprunt.empruntDateDebut, 'dd-MM-yyyy')}"></td>
                         <td th:text="${#dates.format(emprunt.empruntDateFin, 'dd-MM-yyyy')}"></td>
                         <td>

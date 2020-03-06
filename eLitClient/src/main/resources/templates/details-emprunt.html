@@ -44,6 +44,12 @@
                             <td th:text="${emprunt.user.name} + ' ' + ${emprunt.user.lastName} + ' (' + ${emprunt.user.email} +')'"></td>
                         </tr>
                         <tr>
+                            <th>Lieu d'emprunt et de restitution</th>
+                            <td th:text="${emprunt.ouvrage.bibliotheque.bibliothequeNom}"
+                                th:title="${emprunt.ouvrage.bibliotheque.infos()}">
+                            </td>
+                        </tr>
+                        <tr>
                             <th>Emprunt</th>
                             <td th:text="${emprunt.empruntId}"></td>
                         </tr>
@@ -76,6 +82,8 @@
     </div>
 
 </div>
+
+<div th:insert="mon-footer.html"/>
 
 </body>
 </html>

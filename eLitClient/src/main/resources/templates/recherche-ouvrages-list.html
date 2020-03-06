@@ -88,11 +88,12 @@
                             <th>Auteur</th>
                             <th>Style</th>
                             <th>Quantité</th>
+                            <th>Bibliothèque</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr th:if="${#lists.isEmpty(ouvrages)}" class="alert alert-info">
-                            <td colspan="4" align="center">Auncun ouvrage trouvé !!!</td>
+                            <td colspan="5" align="center">Auncun ouvrage trouvé !!!</td>
                         </tr>
                         <tr th:each="ouvrage : ${ouvrages}">
                             <td><a th:href="@{|/ouvrage/details?ouvrageId=${ouvrage.ouvrageId}|}" title="Afficher" data-toggle="tooltip" data-placement="top">
@@ -102,6 +103,7 @@
                             <td th:text="${ouvrage.ouvrageAuteur}"></td>
                             <td th:text="${ouvrage.ouvrageStyle}"></td>
                             <td th:text="${ouvrage.ouvrageQuantite}"></td>
+                            <td th:text="${ouvrage.bibliotheque.bibliothequeNom}" th:title="${ouvrage.bibliotheque.infos()}"></td>
                         </tr>
                         </tbody>
                     </table>

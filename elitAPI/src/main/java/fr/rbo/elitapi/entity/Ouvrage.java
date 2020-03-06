@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Ouvrage {
@@ -23,6 +24,8 @@ public class Ouvrage {
     private String ouvrageLocalisation;
     private String ouvrageQuantite;
     private String ouvrageLienImage;
+    @OneToOne
+    private Bibliotheque bibliotheque;
 
     public Long getOuvrageId() {
         return ouvrageId;
@@ -96,5 +99,11 @@ public class Ouvrage {
         this.ouvrageLienImage = ouvrageLienImage;
     }
 
+    public Bibliotheque getBibliotheque() {
+        return bibliotheque;
+    }
 
+    public void setBibliotheque(Bibliotheque bibliotheque) {
+        this.bibliotheque = bibliotheque;
+    }
 }

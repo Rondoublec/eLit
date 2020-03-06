@@ -59,6 +59,13 @@
                             <th>Quantité restante</th>
                             <td th:text="${ouvrage.getOuvrageQuantite()}"></td>
                         </tr>
+                        <tr>
+                            <th>Lieu de mise à disposition</th>
+                            <td th:text="${ouvrage.bibliotheque.bibliothequeNom}"
+                                th:title="${ouvrage.bibliotheque.infos()}">
+                            </td>
+                        </tr>
+
                     </table>
                 </section>
                 <a href="/ouvrages">Retour</a>
@@ -68,6 +75,8 @@
     </div>
 
 </div>
+
+<div th:insert="mon-footer.html"/>
 
 </body>
 </html>

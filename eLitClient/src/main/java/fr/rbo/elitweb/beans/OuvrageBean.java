@@ -11,6 +11,7 @@ public class OuvrageBean {
     private String ouvrageLocalisation;
     private String ouvrageQuantite;
     private String ouvrageLienImage;
+    private BibliothequeBean bibliotheque;
 
     public OuvrageBean() {
     }
@@ -87,19 +88,12 @@ public class OuvrageBean {
         this.ouvrageLienImage = ouvrageLienImage;
     }
 
-    @Override
-    public String toString() {
-        return "OuvrageBean{" +
-                "ouvrageId=" + ouvrageId +
-                ", ouvrageReference='" + ouvrageReference + '\'' +
-                ", ouvrageTitre='" + ouvrageTitre + '\'' +
-                ", ouvrageAuteur='" + ouvrageAuteur + '\'' +
-                ", ouvrageStyle='" + ouvrageStyle + '\'' +
-                ", ouvrageResume='" + ouvrageResume + '\'' +
-                ", ouvrageLocalisation='" + ouvrageLocalisation + '\'' +
-                ", ouvrageQuantite='" + ouvrageQuantite + '\'' +
-                ", ouvrageLienImage='" + ouvrageLienImage + '\'' +
-                '}';
+    public BibliothequeBean getBibliotheque() {
+        return bibliotheque;
+    }
+
+    public void setBibliotheque(BibliothequeBean bibliotheque) {
+        this.bibliotheque = bibliotheque;
     }
 
 }

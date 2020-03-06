@@ -2,6 +2,7 @@ package fr.rbo.elitweb.proxies;
 
 import feign.Param;
 import feign.RequestLine;
+import fr.rbo.elitweb.beans.BibliothequeBean;
 import fr.rbo.elitweb.beans.EmpruntBean;
 import fr.rbo.elitweb.beans.OuvrageBean;
 import fr.rbo.elitweb.beans.RoleBean;
@@ -13,6 +14,9 @@ import java.util.List;
 
 @FeignClient(name = "elitapi",url = "localhost:8088")
 public interface APIProxy {
+
+    @RequestLine("GET /bibliotheques")
+    List<BibliothequeBean> findAllBibliotheques();
 
     @RequestLine("GET /ouvrages")
     List<OuvrageBean> findAll();
