@@ -49,23 +49,23 @@
                         </tr>
                         <tr>
                             <th>Date d'emprunt</th>
-                            <td th:text="${emprunt.empruntDateDebut}"></td>
+                            <td th:text="${#dates.format(emprunt.empruntDateDebut, 'dd-MM-yyyy')}"></td>
                         </tr>
                         <tr>
                             <th>Date de fin initiale</th>
-                            <td th:text="${emprunt.empruntDateFin}"></td>
+                            <td th:text="${#dates.format(emprunt.empruntDateFin, 'dd-MM-yyyy')}"></td>
                         </tr>
                         <tr>
                             <th>Date de fin prolong&eacute;e</th>
-                            <td th:text="${emprunt.empruntDateProlongation}"></td>
+                            <td th:text="${#dates.format(emprunt.empruntDateProlongation, 'dd-MM-yyyy')}"></td>
                         </tr>
                         <tr>
                             <th>Date de restitution r&eacute;elle</th>
-                            <td th:text="${emprunt.empruntDateRetour}"></td>
+                            <td th:text="${#dates.format(emprunt.empruntDateRetour, 'dd-MM-yyyy')}"></td>
                         </tr>
                         <tr>
                             <th>Date de relance</th>
-                            <td th:text="${emprunt.empruntDateRelance}"></td>
+                            <td th:text="${#dates.format(emprunt.empruntDateRelance, 'dd-MM-yyyy')}"></td>
                         </tr>
                     </table>
                 </section>

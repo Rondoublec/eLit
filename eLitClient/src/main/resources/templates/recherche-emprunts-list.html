@@ -116,11 +116,11 @@
                             <img th:alt="${emprunt.ouvrage.ouvrageTitre}" th:src="${emprunt.ouvrage.ouvrageLienImage}" width="15%"></a>
                             <span th:text="${emprunt.ouvrage.ouvrageTitre}"></span>
                         </td>
-                        <td th:text="${emprunt.empruntDateDebut}"></td>
-                        <td th:text="${emprunt.empruntDateFin}"></td>
+                        <td th:text="${#dates.format(emprunt.empruntDateDebut, 'dd-MM-yyyy')}"></td>
+                        <td th:text="${#dates.format(emprunt.empruntDateFin, 'dd-MM-yyyy')}"></td>
                         <td>
                             <span th:if="${emprunt.empruntProlongation} == true">
-                                <div th:text="${emprunt.empruntDateProlongation}"></div>
+                                <div th:text="${#dates.format(emprunt.empruntDateProlongation, 'dd-MM-yyyy')}"></div>
                             </span>
                             <span th:if="${emprunt.empruntProlongation} == false">
                                 <span th:if="${emprunt.empruntRendu} == false">
@@ -132,8 +132,8 @@
                                 </span>
                             </span>
                         </td>
-                        <td th:text="${emprunt.empruntDateRetour}"></td>
-                        <td th:text="${emprunt.empruntDateRelance}"></td>
+                        <td th:text="${#dates.format(emprunt.empruntDateRetour, 'dd-MM-yyyy')}"></td>
+                        <td th:text="${#dates.format(emprunt.empruntDateRelance, 'dd-MM-yyyy')}"></td>
                     </tr>
                     </tbody>
                 </table>
