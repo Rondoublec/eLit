@@ -37,6 +37,7 @@ public class OuvragesController {
         try {
             ouvrages = apiProxy.rechercheOuvrage(ouvrageCriteres); }
         catch (NotFoundException e) {}
+        model.addAttribute("titre", "Les plus populaires !");
         model.addAttribute("ouvrageCriteres", ouvrageCriteres);
         model.addAttribute("ouvrages", ouvrages);
         return "recherche-ouvrages-list";
@@ -55,6 +56,7 @@ public class OuvragesController {
             ouvrages = apiProxy.rechercheOuvrage(ouvrageCriteres);
         } catch (NotFoundException e) {
         }
+        model.addAttribute("titre", "Résultats de la recherche");
         model.addAttribute("ouvrageCriteres", ouvrageCriteres);
         model.addAttribute("ouvrages", ouvrages);
         return "recherche-ouvrages-list";

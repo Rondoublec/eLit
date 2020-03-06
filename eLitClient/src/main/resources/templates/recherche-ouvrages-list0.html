@@ -17,7 +17,7 @@
 
 <div class="row" style="margin-top:50px;margin-bottom:10px;margin-left:5px;margin-right:5px">
 
-    <div class="col-md-6">
+    <div class="col-md-offset-1 col-md-6">
         <!-- Edit Alert Message -->
         <div th:if="${status eq 'notAuthorize'}">
             <div class="alert alert-danger alert-dismissible" role="alert">
@@ -30,10 +30,9 @@
             </div>
         </div>
     </div>
-    <h3 class="panel-title" th:utext="${titre}"></h3>
+
     <div class="col-md-12">
-        <form data-toggle="validator" role="form" th:object="${ouvrageCriteres}" th:action="@{/ouvrages/recherche}"
-              method="post">
+        <form data-toggle="validator" role="form" th:object="${ouvrageCriteres}" th:action="@{/ouvrages/recherche}" method="post">
             <table class="table table-striped">
                 <thead>
                 <tr class="btn-default">
@@ -45,13 +44,11 @@
                     <th>Text Libre</th>
                 </tr>
                 <tr>
+                    <th><button type="submit" class="btn btn-primary">Rechercher</button></th>
+                    <th><input type="text" class="form-control" th:field="*{ouvrageTitre}" id="ouvrageTitre"  /></th>
+                    <th><input type="text" class="form-control" th:field="*{ouvrageAuteur}" id="ouvrageAuteur"  /></th>
                     <th>
-                        <button type="submit" class="btn btn-primary">Rechercher</button>
-                    </th>
-                    <th><input type="text" class="form-control" th:field="*{ouvrageTitre}" id="ouvrageTitre"/></th>
-                    <th><input type="text" class="form-control" th:field="*{ouvrageAuteur}" id="ouvrageAuteur"/></th>
-                    <th>
-                        <select type="select" class="form-control" size="1" th:field="*{ouvrageStyle}">
+                        <select type="select"  class="form-control"  size="1"  th:field="*{ouvrageStyle}">
                             <option th:value="''" th:text="Tout">Tout</option>
                             <option th:value="'Amour'" th:text="Amour">Amour</option>
                             <option th:value="'BD'" th:text="BD">BD</option>
@@ -64,35 +61,57 @@
                         </select>
                     </th>
                     <th>
-                        <select type="select" class="form-control" size="1" th:field="*{ouvrageQuantite}">
+                        <select type="select"  class="form-control"  size="1"  th:field="*{ouvrageQuantite}">
                             <option th:value="''" th:text="Tout">Tout</option>
                             <option th:value="'1'" th:text="Oui">Oui</option>
                             <option th:value="'0'" th:text="Non">Non</option>
                         </select>
                     </th>
 
-                    <th><input type="text" class="form-control" th:field="*{ouvrageResume}" id="ouvrageResume"/></th>
+                    <th><input type="text" class="form-control" th:field="*{ouvrageResume}" id="ouvrageResume"  /></th>
                 </tr>
                 </thead>
             </table>
         </form>
     </div>
 
-    <div th:if="${#lists.isEmpty(ouvrages)}" class="col-md-8 alert alert-info">
-        <p>Auncun ouvrage trouvé !!!</p>
-    </div>
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Liste des ouvrages</h3>
+            </div>
+            <div class="panel-body">
 
-    <div th:each="ouvrage : ${ouvrages}" class="col-md-2 my-1">
-        <a th:href="@{|/ouvrage/details?ouvrageId=${ouvrage.ouvrageId}|}" title="infos">
-            <img th:alt="${ouvrage.ouvrageTitre}" th:src="${ouvrage.ouvrageLienImage}">
-        </a>
-        <div th:utext="${ouvrage.ouvrageTitre}"></div>
-        <div th:utext="'Auteur ' + ${ouvrage.ouvrageAuteur}"></div>
-        <div th:utext="${ouvrage.ouvrageQuantite} + ' exemplaire(s)'"></div>
-        <div th:utext="'&agrave; ' + ${ouvrage.bibliotheque.bibliothequeNom}"
-             th:title="${ouvrage.bibliotheque.infos()}"></div>
-    </div>
+                <table class="table table-striped">
+                    <thead>
+                    <tr class="btn-default">
+                        <th>Titre</th>
+                        <th>Auteur</th>
+                        <th>Style</th>
+                        <th>Quantité</th>
+                        <th>Bibliothèque</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:if="${#lists.isEmpty(ouvrages)}" class="alert alert-info">
+                        <td colspan="5" align="center">Auncun ouvrage trouvé !!!</td>
+                    </tr>
+                    <tr th:each="ouvrage : ${ouvrages}">
+                        <td><a th:href="@{|/ouvrage/details?ouvrageId=${ouvrage.ouvrageId}|}" title="Afficher" data-toggle="tooltip" data-placement="top">
+                            <img th:alt="${ouvrage.ouvrageTitre}" th:src="${ouvrage.ouvrageLienImage}" width="8%"></a>
+                            <span th:text="${ouvrage.ouvrageTitre}"></span>
+                        </td>
+                        <td th:text="${ouvrage.ouvrageAuteur}"></td>
+                        <td th:text="${ouvrage.ouvrageStyle}"></td>
+                        <td th:text="${ouvrage.ouvrageQuantite}"></td>
+                        <td th:text="${ouvrage.bibliotheque.bibliothequeNom}" th:title="${ouvrage.bibliotheque.infos()}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
 
+        </div>
+    </div>
 </div>
 
 <div th:insert="mon-footer.html"/>
