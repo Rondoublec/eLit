@@ -140,6 +140,15 @@ public class EmpruntController {
         }
     }
 
+    @GetMapping(value="/emprunts/enretard/{id}")
+    public List<Emprunt> listeDesEmpruntsEnRetard2(@PathVariable("id") long id) {
+        User userRecherche = userRepository.findById(id).orElseThrow(() ->
+                new NotFoundException("Utilisateur inexistant"));
+        List<Emprunt> emprunts = empruntRepository.findAllByUserAndEmpruntDateFinIsBeforeAndEmpruntDateProlongationIsNullAndEmpruntDateRetourIsNullOrEmpruntDateProlongationIsNotNullAndEmpruntDateProlongationIsBeforeAndEmpruntDateRetourIsNull(userRecherche, new Date(), new Date());
+        if (emprunts.isEmpty()) throw new NotFoundException("Aucun emprunt en retard");
+        return emprunts;
+    }
+
     private Date dateFinPeriode (Date dateDebut, int duree){
         GregorianCalendar dateFin = new GregorianCalendar();
         dateFin.setTime(dateDebut);
