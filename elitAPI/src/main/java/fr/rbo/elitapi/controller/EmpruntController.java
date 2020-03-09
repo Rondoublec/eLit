@@ -141,7 +141,7 @@ public class EmpruntController {
     }
 
     @GetMapping(value="/emprunts/enretard/{id}")
-    public List<Emprunt> listeDesEmpruntsEnRetard2(@PathVariable("id") long id) {
+    public List<Emprunt> listeDesEmpruntsEnRetard(@PathVariable("id") long id) {
         User userRecherche = userRepository.findById(id).orElseThrow(() ->
                 new NotFoundException("Utilisateur inexistant"));
         List<Emprunt> emprunts = empruntRepository.findAllByUserAndEmpruntDateFinIsBeforeAndEmpruntDateProlongationIsNullAndEmpruntDateRetourIsNullOrEmpruntDateProlongationIsNotNullAndEmpruntDateProlongationIsBeforeAndEmpruntDateRetourIsNull(userRecherche, new Date(), new Date());

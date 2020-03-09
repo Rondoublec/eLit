@@ -44,6 +44,9 @@ public interface APIProxy {
     @RequestLine("PUT /emprunt/plus/{id}")
     EmpruntBean prolongeEmpruntById(@Param("id") int id);
 
+    @RequestLine("GET /emprunts/enretard/{id}")
+    List<EmpruntBean> listeDesEmpruntsEnRetard(@Param("id") long id);
+
     @RequestLine("GET /users")
     List<UserBean> listeDesUsers();
 

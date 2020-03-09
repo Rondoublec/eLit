@@ -11,34 +11,28 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PlanifBatch {
-    private static final Logger LOGGER = LoggerFactory.getLogger(PlanifBatch.class);
+public class PlanificationBatchRelanceRetards {
+    private static final Logger LOGGER = LoggerFactory.getLogger(PlanificationBatchRelanceRetards.class);
 
-    @Autowired
-    private APIProxy apiProxy;
-    @Autowired
-    private EmailService emailService;
     @Autowired
     private RelanceRetards relanceRetards;
 
     private final ClientAPIService clientService;
 
-    public PlanifBatch(ClientAPIService clientService) {
+    public PlanificationBatchRelanceRetards(ClientAPIService clientService) {
         this.clientService = clientService;
     }
 
     /**
-     * Planification du batch
+     * Planification du batch de relance des retards de restitutions d'emprunts
      */
     //toutes les 2 minutes
     @Scheduled(cron = "0 */2 * ? * *")
-    //une fois par jour à midi
-    //@Scheduled(cron = "0 0 12 * * ?")
-
-    public void planifBatchCron() {
+    public void PlanificationBatchRelanceRetardsCron() {
         LOGGER.debug("Lancement du batch");
-
+        System.out.println( "DEBUT : Appel du traitement des relances ========================== ");
         relanceRetards.mailsDeRelances();
+        System.out.println( " FIN  : Appel du traitement des relances ========================== ");
 
     }
 }

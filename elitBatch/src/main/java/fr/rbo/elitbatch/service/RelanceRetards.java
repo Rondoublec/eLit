@@ -14,7 +14,7 @@ import java.util.List;
 
 @Service
 public class RelanceRetards {
-    private static final Logger LOGGER = LoggerFactory.getLogger(EmailService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(RelanceRetards.class);
 
 
     @Autowired
@@ -30,22 +30,18 @@ public class RelanceRetards {
     public void mailsDeRelances() {
         LOGGER.debug("Début du traitement : mailsDeRelances");
         Date date = new Date();
-        System.out.println(
-                "Passage du batch d'envoi des mails de relances - " + date.toString());
+        System.out.println("Passage du batch d'envoi des mails de relances - " + date.toString());
         List<UserBean> listeUser = clientService.listeUser();
-        UserBean userCritere = new UserBean();
-        EmpruntBean empruntCriteres = new EmpruntBean();
         for (UserBean user : listeUser)  {
+        System.out.println( "user : " + user.getId());
             List<EmpruntBean> emprunts = null;
-            userCritere.setEmail(user.getEmail());
-            empruntCriteres.setUser(userCritere);
-            empruntCriteres.setEmpruntRendu(false);
             try {
-                emprunts = apiProxy.rechercheEmpruntCriteres(empruntCriteres);
+                emprunts = apiProxy.listeDesEmpruntsEnRetard(user.getId());
                 if (!emprunts.isEmpty()) {
                     emailService.envoiEmailRelance(user, emprunts);
-                    //TODO mettre à jour le champs du nombre de relances
+                    //TODO Créer un champs Nb relance et l'incrémenter
                     //TODO mettre à jour la date de relance sur les emprunts
+                    //TODO ne relancer qu'une sois par semaine
                 }
             } catch(NotFoundException e){}
         }

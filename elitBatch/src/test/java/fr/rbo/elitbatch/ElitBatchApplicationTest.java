@@ -52,7 +52,7 @@ class ElitBatchApplicationTest {
         emailService.envoiEmailRelance(user, listeEmprunt);
     }
 
-//    @Test
+    @Test
     public void testTraitementRelance() {
         relanceRetards.mailsDeRelances();
     }
