@@ -29,7 +29,7 @@ public class PlanificationBatchRelanceRetards {
     //toutes les 2 minutes
     @Scheduled(cron = "0 */2 * ? * *")
     public void PlanificationBatchRelanceRetardsCron() {
-        LOGGER.debug("Lancement du batch");
+        LOGGER.info("Lancement du batch");
         System.out.println( "DEBUT : Appel du traitement des relances ========================== ");
         relanceRetards.mailsDeRelances();
         System.out.println( " FIN  : Appel du traitement des relances ========================== ");

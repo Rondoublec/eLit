@@ -19,6 +19,7 @@ public class ClientAPIService {
     private APIProxy apiProxy;
 
     public List<UserBean> listeUser (){
+        LOGGER.debug("listeUser");
         try {
             return apiProxy.listeDesUsers();
         } catch (NotFoundException e) {

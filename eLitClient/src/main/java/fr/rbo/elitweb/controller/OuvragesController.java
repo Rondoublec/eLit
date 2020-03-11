@@ -4,6 +4,8 @@ import fr.rbo.elitweb.beans.BibliothequeBean;
 import fr.rbo.elitweb.beans.OuvrageBean;
 import fr.rbo.elitweb.exceptions.NotFoundException;
 import fr.rbo.elitweb.proxies.APIProxy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,7 @@ import java.util.List;
 
 @Controller
 public class OuvragesController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(OuvragesController.class);
 
     @Autowired
     APIProxy apiProxy;
@@ -28,6 +31,7 @@ public class OuvragesController {
     @RequestMapping(value = "/ouvrages", method = RequestMethod.GET)
     public String Ouvrages(Model model, HttpSession httpSession
             , final RedirectAttributes redirectAttributes) {
+        LOGGER.debug("Get /ouvrages");
         OuvrageBean ouvrageCriteres = new OuvrageBean();
         ouvrageCriteres.setBibliotheque(choixBibliotheque());
         try {
@@ -47,6 +51,7 @@ public class OuvragesController {
     public String OuvragesRecherche(Model model,
                                     @ModelAttribute("ouvrageCriteres") OuvrageBean ouvrageCriteres,
                                     HttpSession httpSession) {
+        LOGGER.debug("Post /ouvrages/recherche");
         ouvrageCriteres.setBibliotheque(choixBibliotheque());
         try {
             if (ouvrageCriteres.getBibliotheque().getBibliothequeId().toString().isEmpty()) { return "redirect:/bibliotheques"; }}
@@ -65,6 +70,7 @@ public class OuvragesController {
     @RequestMapping(value = "/ouvrage/details", method = RequestMethod.GET)
     public String details(@RequestParam("ouvrageId") int ouvrageId, Model model
             , final RedirectAttributes redirectAttributes) {
+        LOGGER.debug("Get /ouvrages/details ouvrageId : " + ouvrageId);
         OuvrageBean ouvrage = null;
         try {
             ouvrage = apiProxy.findOuvrageById(ouvrageId);
@@ -79,6 +85,7 @@ public class OuvragesController {
 
     private BibliothequeBean choixBibliotheque() {
         BibliothequeBean bibliothequeChoisie = new BibliothequeBean();
+        LOGGER.debug("choixBibliotheque");
         try {
             bibliothequeChoisie.setBibliothequeId(Long.parseLong(request.getSession().getAttribute("bibliotheque").toString()));
         } catch (Exception e) {

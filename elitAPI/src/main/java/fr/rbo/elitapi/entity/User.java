@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
@@ -18,6 +19,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.annotation.Transient;
 
 @Entity
+@Table(name = "utilisateur")
 public class User {
 	private static final Logger log = LoggerFactory.getLogger(User.class);
 

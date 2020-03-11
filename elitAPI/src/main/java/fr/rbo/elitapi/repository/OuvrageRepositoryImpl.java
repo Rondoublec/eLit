@@ -1,6 +1,8 @@
 package fr.rbo.elitapi.repository;
 
 import fr.rbo.elitapi.entity.Ouvrage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -13,6 +15,7 @@ import java.util.List;
 
 @Repository
 public class OuvrageRepositoryImpl implements OuvrageRepositoryInterface {
+    private static final Logger LOGGER = LoggerFactory.getLogger(OuvrageRepositoryImpl.class);
 
     final EntityManager em;
     public OuvrageRepositoryImpl(EntityManager em) {
@@ -25,6 +28,7 @@ public class OuvrageRepositoryImpl implements OuvrageRepositoryInterface {
         CriteriaQuery<Ouvrage> cq = cb.createQuery(Ouvrage.class);
         Root<Ouvrage> ouvrage = cq.from(Ouvrage.class);
         List<Predicate> predicates = new ArrayList<>();
+        LOGGER.debug("rechercheOuvrage");
 
         try {
             if (!ouvrageCherche.getBibliotheque().getBibliothequeId().toString().isEmpty()) {

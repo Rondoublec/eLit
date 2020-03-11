@@ -29,7 +29,7 @@ public class EmailService {
      * @param listeEmprunt
      */
     public void envoiEmailRelance(UserBean user, List<EmpruntBean> listeEmprunt) {
-        LOGGER.debug("Envoi mail");
+        LOGGER.info("Envoi mail");
         StringBuilder listeDesEmprunts = new StringBuilder();
         SimpleDateFormat formater = new SimpleDateFormat("'le' dd/MM/yyyy");
 

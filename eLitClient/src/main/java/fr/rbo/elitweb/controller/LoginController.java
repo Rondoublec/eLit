@@ -2,6 +2,8 @@ package fr.rbo.elitweb.controller;
 
 import fr.rbo.elitweb.beans.UserBean;
 import fr.rbo.elitweb.service.UserService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +15,7 @@ import javax.validation.Valid;
 
 @Controller
 public class LoginController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoginController.class);
 
     private final UserService userService;
 
@@ -20,15 +23,26 @@ public class LoginController {
         this.userService = userService;
     }
 
+    /**
+     * Affiche le formulaire de connexion
+     * @param model
+     * @return
+     */
     @RequestMapping(value="/login", method = RequestMethod.GET)
     public ModelAndView login(Model model){
+        LOGGER.debug("Get /login");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
         return modelAndView;
     }
 
+    /**
+     * Affiche le formulaire de création de compte
+     * @return
+     */
     @RequestMapping(value="/registration", method = RequestMethod.GET)
     public ModelAndView registration(){
+        LOGGER.debug("Get /registration");
         ModelAndView modelAndView = new ModelAndView();
         UserBean userBean = new UserBean();
         modelAndView.addObject("userBean", userBean);
@@ -36,8 +50,15 @@ public class LoginController {
         return modelAndView;
     }
 
+    /**
+     * Récupère et traite les information de création de compte
+     * @param userBean
+     * @param bindingResult
+     * @return
+     */
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView creerNouveauUser(@Valid UserBean userBean, BindingResult bindingResult) {
+        LOGGER.debug("Post /registration");
         ModelAndView modelAndView = new ModelAndView();
 
         if (!bindingResult.hasErrors()) {

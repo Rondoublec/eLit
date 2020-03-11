@@ -20,9 +20,10 @@ public class ClientAPIService {
     private APIProxy apiProxy;
 
     public UserBean creerUser (@Valid UserBean user) {
+        LOGGER.debug("creerUser email : " + user.getEmail());
         try {
             UserBean userExistant = apiProxy.recupererUnUser(user.getId());
-            LOGGER.info("User déjà existant pour cet id Web");
+            LOGGER.warn("User déjà existant pour cet id Web");
             return userExistant;
         } catch (NotFoundException e) {
             try {
@@ -44,6 +45,7 @@ public class ClientAPIService {
         }
     }
     public UserBean recupererUnUserParEmail(String email) {
+        LOGGER.debug("recupererUnUserParEmail : " + email);
         try {
             UserBean user = apiProxy.recupererUnUserParEmail(email);
             return user;
@@ -55,6 +57,7 @@ public class ClientAPIService {
     }
 
     public RoleBean recupererUnRoleParRole(String role) {
+        LOGGER.debug("recupererUnRoleParRole : " + role);
         try {
             RoleBean roleTrouve = apiProxy.roleParRole(role);
             return roleTrouve;

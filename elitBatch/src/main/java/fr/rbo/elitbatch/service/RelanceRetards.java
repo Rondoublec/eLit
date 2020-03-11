@@ -28,7 +28,7 @@ public class RelanceRetards {
     }
 
     public void mailsDeRelances() {
-        LOGGER.debug("Début du traitement : mailsDeRelances");
+        LOGGER.info("Début du traitement : mailsDeRelances");
         Date date = new Date();
         System.out.println("Passage du batch d'envoi des mails de relances - " + date.toString());
         List<UserBean> listeUser = clientService.listeUser();

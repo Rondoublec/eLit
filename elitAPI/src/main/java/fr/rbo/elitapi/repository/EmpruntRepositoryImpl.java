@@ -1,6 +1,8 @@
 package fr.rbo.elitapi.repository;
 
 import fr.rbo.elitapi.entity.Emprunt;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -13,6 +15,7 @@ import java.util.List;
 
 @Repository
 public class EmpruntRepositoryImpl implements EmpruntRepositoryInterface {
+    private static final Logger LOGGER = LoggerFactory.getLogger(EmpruntRepositoryImpl.class);
 
     final EntityManager em;
     public EmpruntRepositoryImpl(EntityManager em) {
@@ -25,6 +28,7 @@ public class EmpruntRepositoryImpl implements EmpruntRepositoryInterface {
         CriteriaQuery<Emprunt> cq = cb.createQuery(Emprunt.class);
         Root<Emprunt> emprunt = cq.from(Emprunt.class);
         List<Predicate> predicates = new ArrayList<>();
+        LOGGER.debug("rechercheEmprunt, avec action = " + action);
 
         try {
             if (!empruntCherche.getUser().getEmail().isEmpty()) {

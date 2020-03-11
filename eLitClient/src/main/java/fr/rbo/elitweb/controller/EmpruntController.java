@@ -5,6 +5,8 @@ import fr.rbo.elitweb.beans.UserBean;
 import fr.rbo.elitweb.exceptions.NotAcceptableException;
 import fr.rbo.elitweb.exceptions.NotFoundException;
 import fr.rbo.elitweb.proxies.APIProxy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,13 +22,22 @@ import java.util.List;
 
 @Controller
 public class EmpruntController {
+    private static final Logger LOGGER = LoggerFactory.getLogger(EmpruntController.class);
 
     @Autowired
     APIProxy apiProxy;
 
+    /**
+     * Affiche la liste de emprunts en cours (non rendus) de l'utilisateur connecté
+     * @param model
+     * @param httpSession
+     * @param redirectAttributes
+     * @return
+     */
     @RequestMapping(value="/mesemprunts", method = RequestMethod.GET)
     public String MesEmprunts(Model model, HttpSession httpSession
             ,final RedirectAttributes redirectAttributes){
+        LOGGER.debug("Get /mesemprunts");
         EmpruntBean empruntCriteres = new EmpruntBean();
         empruntCriteres.setUser(recupUser());
         empruntCriteres.setEmpruntRendu(false);
@@ -38,10 +49,18 @@ public class EmpruntController {
         model.addAttribute("emprunts", emprunts);
         return "recherche-emprunts-list";
     }
+    /**
+     * Affiche la liste de emprunts de l'utilisateur connecté correspondants aux critères de recherche
+     * @param model
+     * @param empruntCriteres
+     * @param httpSession
+     * @return
+     */
     @RequestMapping(value="/mesemprunts/recherche", method = RequestMethod.POST)
     public String EmpruntsRecherche (Model model,
                                      @ModelAttribute("empruntCriteres") EmpruntBean empruntCriteres,
                                      HttpSession httpSession) {
+        LOGGER.debug("Post /mesemprunts/recherche");
         List<EmpruntBean> emprunts = null;
         empruntCriteres.setUser(recupUser());
         try {
@@ -51,9 +70,18 @@ public class EmpruntController {
         model.addAttribute("emprunts", emprunts);
         return "recherche-emprunts-list";
     }
+
+    /**
+     * Affiche les informations détaillées d'un emprunts
+     * @param empruntId
+     * @param model
+     * @param redirectAttributes
+     * @return
+     */
     @RequestMapping(value = "/emprunt/details", method = RequestMethod.GET)
     public String details(@RequestParam("empruntId") int empruntId, Model model
             ,final RedirectAttributes redirectAttributes){
+        LOGGER.debug("Get /emprunt/details empruntId : " + empruntId);
         EmpruntBean emprunt = null;
         try {
             emprunt = apiProxy.findEmpruntById(empruntId);
@@ -70,9 +98,18 @@ public class EmpruntController {
         model.addAttribute("emprunt", emprunt);
         return "details-emprunt";
     }
+
+    /**
+     * Prolonge un emprunt en cours pour 4 semaines supplémentaires, (règles portées par l'API)
+     * @param empruntId
+     * @param model
+     * @param redirectAttributes
+     * @return
+     */
     @RequestMapping(value = "/emprunt/plus", method = RequestMethod.GET)
     public String plus(@RequestParam("empruntId") int empruntId, Model model
             ,final RedirectAttributes redirectAttributes){
+        LOGGER.debug("Get /emprunt/plus empruntId : " + empruntId);
         EmpruntBean emprunt = null;
         try {
             emprunt = apiProxy.findEmpruntById(empruntId);
@@ -100,6 +137,7 @@ public class EmpruntController {
     private UserBean recupUser(){
         UserBean userCritere = new UserBean();
         userCritere.setEmail(SecurityContextHolder.getContext().getAuthentication().getName());
+        LOGGER.debug("recupUser critere email : " + userCritere.getEmail());
         return userCritere;
     }
 
