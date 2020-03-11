@@ -22,18 +22,18 @@
     <logger name="com.zaxxer" level="ERROR"/>
     <logger name="org.thymeleaf" level="ERROR"/>
 
+<!--
     <root>
-<!--        <level value="INFO" />-->
+&lt;!&ndash;        <level value="INFO" />&ndash;&gt;
         <level value="DEBUG" />
         <appender-ref ref="console" />
         <appender-ref ref="rollingFile" />
     </root>
-    <!--
-            <logger name="fr.rbo" level="INFO">
+-->
+            <logger name="fr.rbo" level="DEBUG">
                 <appender-ref ref="console" />
                 <appender-ref ref="rollingFile" />
             </logger>
-    -->
     <!--
             <root level="DEBUG">
                 <appender-ref ref="console" />
