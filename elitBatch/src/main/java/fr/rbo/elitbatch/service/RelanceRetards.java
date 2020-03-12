@@ -27,6 +27,11 @@ public class RelanceRetards {
         this.clientService = clientService;
     }
 
+    /**
+     * Itère sur la liste des adhérents des bibiliothèques
+     * Et pour chaque adhérent va rechercher les ouvrages en retard, emprunt en cours dont la date de restitution (prolongation comprise) est dépassée
+     * Et pour envoi un email au adhérents concernés
+     */
     public void mailsDeRelances() {
         LOGGER.info("Début du traitement : mailsDeRelances");
         Date date = new Date();

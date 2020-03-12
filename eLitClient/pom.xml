@@ -8,9 +8,10 @@
 		<version>2.2.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.client</groupId>
+	<groupId>fr.rbo</groupId>
 	<artifactId>eLitClient</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>eLitClient</name>
 	<description>Client feign acces API elit</description>
 

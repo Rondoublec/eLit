@@ -22,7 +22,7 @@ public class BibliothequeController {
 
     /**
      * Restitue la liste des bibliothèques
-     * @return
+     * @return liste des bibliothèques
      */
     @GetMapping(value="/bibliotheques")
     public List<Bibliotheque> listeDesBibliotheques(){

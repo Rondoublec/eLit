@@ -25,8 +25,19 @@ public class PlanificationBatchRelanceRetards {
 
     /**
      * Planification du batch de relance des retards de restitutions d'emprunts
+     * Paramétrage de @Scheduled(cron = "* * * * * * *")
+     *                                   * seconde (0-59)
+     *                                     * minute (0-59)
+     *                                       * heure (0-23)
+     *                                         * jour du mois (1-31)
+     *                                           * mois (1-12)
+     *                                             * jour de la semaine (0-6) 0=lundi
+     *                                              * année
+     * exemples :
+     * A 23 heure du lundi au vendredi cron = "0 0 23 * * 0-4"
+     * A 23 heure tous les jours cron = "0 0 23 * * ?"
      */
-    //toutes les 2 minutes
+    //toutes les 2 minutes pour les besoin du test
     @Scheduled(cron = "0 */2 * ? * *")
     public void PlanificationBatchRelanceRetardsCron() {
         LOGGER.info("Lancement du batch");

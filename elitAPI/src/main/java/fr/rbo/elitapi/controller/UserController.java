@@ -24,7 +24,7 @@ public class UserController {
 
     /**
      * renvoi la liste des comptes existants
-     * @return
+     * @return liste des comptes existants
      */
     @GetMapping(value="/users")
     public List<User> listeDesUsers(){
@@ -36,8 +36,8 @@ public class UserController {
 
     /**
      * renvoie les informations du compte correspondant à l'id
-     * @param id
-     * @return
+     * @param id du user
+     * @return user
      */
     @GetMapping(value = "/user/{id}")
     public User recupererUser (@PathVariable("id") Long id){
@@ -49,8 +49,8 @@ public class UserController {
 
     /**
      * renvoie les informations du compte correspondant à l'email
-     * @param email
-     * @return
+     * @param email du user
+     * @return user
      */
     @GetMapping(value = "/user/email/{email}")
     public User recupererUserParEmail (@PathVariable("email") String email){
@@ -62,8 +62,8 @@ public class UserController {
 
     /**
      * crée le compte correspondant aux information contenues dans le flux
-     * @param user
-     * @return
+     * @param user données
+     * @return user
      */
     @PostMapping(value = "/user/")
     @ResponseBody

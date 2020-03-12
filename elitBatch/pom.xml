@@ -8,10 +8,10 @@
 		<version>2.2.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>Demo</artifactId>
+	<groupId>fr.rbo</groupId>
+	<artifactId>eLitBatch</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
+	<name>eLitBatch</name>
 	<description>Spring Boot Batch</description>
 
 	<properties>

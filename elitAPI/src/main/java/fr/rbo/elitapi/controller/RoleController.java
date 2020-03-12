@@ -21,7 +21,7 @@ public class RoleController {
 
     /**
      * renvoie la liste des roles existants
-     * @return
+     * @return liste des roles existants
      */
     @GetMapping(value="/roles")
     public List<Role> listeDesRoles(){
@@ -33,8 +33,8 @@ public class RoleController {
 
     /**
      * renvoie le role correspondant au role demandé
-     * @param role
-     * @return
+     * @param role recherché
+     * @return role correspondant au role demandé
      */
     @GetMapping(value = "/roles/role/{role}")
     public Role recupererUnRoleParRole (@PathVariable("role") String role){

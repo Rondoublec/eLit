@@ -25,8 +25,8 @@ public class EmailService {
 
     /**
      * Envoi un mail avec la liste des prets en retard à l'user concerné
-     * @param user
-     * @param listeEmprunt
+     * @param user utilisateur
+     * @param listeEmprunt liste des emprunts
      */
     public void envoiEmailRelance(UserBean user, List<EmpruntBean> listeEmprunt) {
         LOGGER.info("Envoi mail");

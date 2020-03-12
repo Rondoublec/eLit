@@ -28,7 +28,7 @@ public class OuvrageController {
 
     /**
      * renvoie la liste de tous les ouvrages
-     * @return
+     * @return la liste de tous les ouvrages
      */
     @GetMapping(value="/ouvrages")
     public List<Ouvrage> listeDesOuvrages(){
@@ -37,9 +37,11 @@ public class OuvrageController {
         if (ouvrages.isEmpty()) throw new NotFoundException("Il n'y a pas d'ouvrage correspondant à votre recherche");
         return ouvrages;
     }
+
     /**
      * renvoie la liste des ouvrages correspondants aux critères de recherche
-     * @return
+     * @param ouvrageCherche critères de recherche
+     * @return la liste des ouvrages correspondants aux critères de recherche
      */
     @PostMapping(value="/ouvrages/recherche")
     public List<Ouvrage> listeDesOuvragesSelonCriteres( @RequestBody Ouvrage ouvrageCherche){
@@ -51,8 +53,8 @@ public class OuvrageController {
 
     /**
      * renvoie les informations détailes de l'ouvrage correspondant à l'id
-     * @param id
-     * @return
+     * @param id de l'ouvrage
+     * @return les informations détailes de l'ouvrage correspondant à l'id
      */
     @GetMapping(value = "/ouvrage/{id}")
     public Ouvrage recupererUnOuvrage (@PathVariable("id") Long id){
@@ -64,8 +66,8 @@ public class OuvrageController {
 
     /**
      * crée un ouvrage avec les informations contenues dans le flux
-     * @param ouvrage
-     * @return
+     * @param ouvrage données
+     * @return ouvrage
      */
     @PostMapping(value = "/ouvrage/ajout")
     public Ouvrage creerOuvrage (@RequestBody Ouvrage ouvrage){
@@ -77,9 +79,9 @@ public class OuvrageController {
 
     /**
      * met à jour les informations de l'ouvrage correspondant à l'id avec les informations contenues dans le flux
-     * @param id
-     * @param ouvrageNew
-     * @return
+     * @param id de l'ouvrage
+     * @param ouvrageNew données
+     * @return ouvrage
      */
     @PutMapping(value = "/ouvrage/maj/{id}")
     public Ouvrage mettreAJourOuvrage (@PathVariable("id") Long id,

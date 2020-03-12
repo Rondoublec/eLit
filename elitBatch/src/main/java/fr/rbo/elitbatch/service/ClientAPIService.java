@@ -18,6 +18,10 @@ public class ClientAPIService {
     @Autowired
     private APIProxy apiProxy;
 
+    /**
+     * Recupère la liste des adhérents des bibiliothèques
+     * @return liste des utilisateurs
+     */
     public List<UserBean> listeUser (){
         LOGGER.debug("listeUser");
         try {

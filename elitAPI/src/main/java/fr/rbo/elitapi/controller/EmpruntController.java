@@ -40,7 +40,7 @@ public class EmpruntController {
 
     /**
      * renvoie la liste des emprunts
-     * @return
+     * @return liste des emprunts
      */
     @GetMapping(value="/emprunts")
     public List<Emprunt> listeDesEmprunts(){
@@ -52,9 +52,9 @@ public class EmpruntController {
 
     /**
      * renvoie la liste des emprunts répondants aux critères  action et/ou empruntCherche
-     * @param action
-     * @param empruntCherche
-     * @return
+     * @param action demandée
+     * @param empruntCherche critères
+     * @return liste des emprunts correspondants au critères
      */
     @PostMapping(value="/emprunts/recherche/{action}")
     public List<Emprunt> listeDesEmpruntsSelonCriteres( @PathVariable("action") String action
@@ -67,8 +67,8 @@ public class EmpruntController {
 
     /**
      * renvoie les informations de l'emprunt cotrrespondant à l'id
-     * @param id
-     * @return
+     * @param id de l'emprunt
+     * @return emprunt
      */
     @GetMapping(value = "/emprunt/{id}")
     public Optional<Emprunt> recupererUnEmprunt (@PathVariable("id") Long id){
@@ -81,8 +81,8 @@ public class EmpruntController {
     /**
      * prolonge une seule fois l'emprunt en cours (non rendu) correspondant à l'id
      * , de 28 jours supplémentaires à la date de restitution initiale
-     * @param id
-     * @return
+     * @param id de l'emprunt
+     * @return emprunt
      */
     @PutMapping(value = "/emprunt/plus/{id}")
     public Emprunt prolongerEmprunt (@PathVariable("id") Long id){
@@ -103,8 +103,8 @@ public class EmpruntController {
 
     /**
      * crée un emprunt pour l'utilisateur et l'ouvrage spécifiés dans le flux et met à jour (décremente de 1) la quantité d'ouvrages disponibles
-     * @param emprunt
-     * @return
+     * @param emprunt de l'emprunt
+     * @return emprunt
      */
     @PostMapping(value = "/emprunt/ajout")
     public Emprunt creerEmprunt (@RequestBody Emprunt emprunt){
@@ -132,8 +132,8 @@ public class EmpruntController {
     }
     /**
      * crée ou met à jour un emprunt pour l'utilisateur et l'ouvrage spécifiés dans le flux
-     * @param emprunt
-     * @return
+     * @param emprunt données
+     * @return emprunt
      */
     @PostMapping(value = "/emprunt/upsert")
     public Emprunt majOrUpdateEmprunt (@RequestBody Emprunt emprunt){
@@ -146,8 +146,8 @@ public class EmpruntController {
 
     /**
      * met à jour sur l'emprunt la date de restitution et met à jour (incrémente de 1) la quantité d'ouvrages disponibles
-     * @param id
-     * @return
+     * @param id de l'emprunt
+     * @return emprunt
      */
     @GetMapping(value = "/emprunt/retour/{id}")
     public Emprunt retournerEmprunt (@PathVariable("id") Long id){
@@ -171,8 +171,8 @@ public class EmpruntController {
 
     /**
      * Supprime l'emprunt correspondant à l'id
-     * @param id
-     * @return
+     * @param id de l'emprunt
+     * @return resultat de l'action
      */
     @GetMapping(value = "/emprunt/suppr/{id}")
     public String supprimerEmprunt (@PathVariable("id") Long id){
@@ -194,8 +194,8 @@ public class EmpruntController {
 
     /**
      * renvoie la liste des emprunts en cours en retards
-     * @param id
-     * @return
+     * @param id de l'utilisateur
+     * @return liste des emprunts en retards pour un utilisateur
      */
     @GetMapping(value="/emprunts/enretard/{id}")
     public List<Emprunt> listeDesEmpruntsEnRetard(@PathVariable("id") long id) {

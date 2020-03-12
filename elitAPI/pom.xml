@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>fr.rbo</groupId>
-	<artifactId>elitapi</artifactId>
+	<artifactId>eLitAPI</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>elitapi</name>
+	<name>eLitAPI</name>
 	<description>JPA REST API</description>
 
 	<properties>

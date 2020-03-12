@@ -29,10 +29,10 @@ public class EmpruntController {
 
     /**
      * Affiche la liste de emprunts en cours (non rendus) de l'utilisateur connecté
-     * @param model
-     * @param httpSession
-     * @param redirectAttributes
-     * @return
+     * @param model model
+     * @param httpSession Session
+     * @param redirectAttributes attributs valorisés de la redirection
+     * @return liste de emprunts en cours (non rendus) de l'utilisateur connecté
      */
     @RequestMapping(value="/mesemprunts", method = RequestMethod.GET)
     public String MesEmprunts(Model model, HttpSession httpSession
@@ -51,10 +51,10 @@ public class EmpruntController {
     }
     /**
      * Affiche la liste de emprunts de l'utilisateur connecté correspondants aux critères de recherche
-     * @param model
-     * @param empruntCriteres
-     * @param httpSession
-     * @return
+     * @param model model
+     * @param empruntCriteres citères de recherche
+     * @param httpSession Session
+     * @return liste de emprunts de l'utilisateur connecté correspondants aux critères de recherche
      */
     @RequestMapping(value="/mesemprunts/recherche", method = RequestMethod.POST)
     public String EmpruntsRecherche (Model model,
@@ -72,11 +72,11 @@ public class EmpruntController {
     }
 
     /**
-     * Affiche les informations détaillées d'un emprunts
-     * @param empruntId
-     * @param model
-     * @param redirectAttributes
-     * @return
+     * Affiche les informations détaillées d'un emprunt
+     * @param empruntId de l'emprunt
+     * @param model model
+     * @param redirectAttributes attributs valorisés de la redirection
+     * @return informations détaillées de l'emprunt
      */
     @RequestMapping(value = "/emprunt/details", method = RequestMethod.GET)
     public String details(@RequestParam("empruntId") int empruntId, Model model
@@ -101,10 +101,10 @@ public class EmpruntController {
 
     /**
      * Prolonge un emprunt en cours pour 4 semaines supplémentaires, (règles portées par l'API)
-     * @param empruntId
-     * @param model
-     * @param redirectAttributes
-     * @return
+     * @param empruntId de l'emprunt
+     * @param model model
+     * @param redirectAttributes attributs valorisés de la redirection
+     * @return redirection vers la liste des emprunts rafraichie
      */
     @RequestMapping(value = "/emprunt/plus", method = RequestMethod.GET)
     public String plus(@RequestParam("empruntId") int empruntId, Model model

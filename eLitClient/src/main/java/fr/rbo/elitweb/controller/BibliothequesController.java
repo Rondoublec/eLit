@@ -28,10 +28,10 @@ public class BibliothequesController {
 
     /**
      * Affiche la liste des bibliothèques
-     * @param model
-     * @param httpSession
-     * @param redirectAttributes
-     * @return
+     * @param model model
+     * @param httpSession Session
+     * @param redirectAttributes attributs valorisés de la redirection
+     * @return liste des bibliothèques
      */
     @RequestMapping(value="/bibliotheques", method = RequestMethod.GET)
     public String Ouvrages(Model model, HttpSession httpSession
@@ -44,10 +44,10 @@ public class BibliothequesController {
 
     /**
      * Sauvegarde dans la session de l'utilisateur de la bibliothèque choisie
-     * @param bibliothequeId
-     * @param model
-     * @param redirectAttributes
-     * @return
+     * @param bibliothequeId de la bibliothèque selectionnée
+     * @param model model
+     * @param redirectAttributes attributs valorisés de la redirection
+     * @return redirection vers ouvrages
      */
     @RequestMapping(value = "/mabibliotheque", method = RequestMethod.GET)
     public String details(@RequestParam("bibliothequeId") int bibliothequeId, Model model

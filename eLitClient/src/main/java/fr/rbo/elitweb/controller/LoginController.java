@@ -25,8 +25,8 @@ public class LoginController {
 
     /**
      * Affiche le formulaire de connexion
-     * @param model
-     * @return
+     * @param model model
+     * @return formulaire de connexion
      */
     @RequestMapping(value="/login", method = RequestMethod.GET)
     public ModelAndView login(Model model){
@@ -38,7 +38,7 @@ public class LoginController {
 
     /**
      * Affiche le formulaire de création de compte
-     * @return
+     * @return formulaire de création de compte
      */
     @RequestMapping(value="/registration", method = RequestMethod.GET)
     public ModelAndView registration(){
@@ -52,9 +52,9 @@ public class LoginController {
 
     /**
      * Récupère et traite les information de création de compte
-     * @param userBean
-     * @param bindingResult
-     * @return
+     * @param userBean données de l'utilisateur à créer
+     * @param bindingResult resultat des validations
+     * @return formulaire de création de compte avec répoonse de l'action
      */
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public ModelAndView creerNouveauUser(@Valid UserBean userBean, BindingResult bindingResult) {
