@@ -1,5 +1,6 @@
 package fr.rbo.elitbatch;
 
+import fr.rbo.elitbatch.ScheduledTask.PlanificationBatchRelanceRetards;
 import fr.rbo.elitbatch.beans.EmpruntBean;
 import fr.rbo.elitbatch.beans.OuvrageBean;
 import fr.rbo.elitbatch.beans.UserBean;
@@ -27,6 +28,8 @@ class ElitBatchApplicationTest {
     private RelanceRetards relanceRetards;
 
     private EmailService emailService;
+    @Autowired
+    private PlanificationBatchRelanceRetards planificationBatchRelanceRetards;
 
     @Test
     public void testRien() {
@@ -52,9 +55,12 @@ class ElitBatchApplicationTest {
         emailService.envoiEmailRelance(user, listeEmprunt);
     }
 
-    @Test
+//    @Test
     public void testTraitementRelance() {
         relanceRetards.mailsDeRelances();
     }
-
+//    @Test
+    public void testPlanification(){
+        planificationBatchRelanceRetards.PlanificationBatchRelanceRetardsCron();
+    }
 }

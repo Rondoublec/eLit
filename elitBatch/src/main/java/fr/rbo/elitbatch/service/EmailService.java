@@ -42,7 +42,7 @@ public class EmailService {
         }
         String subject = "Date de retour de prêt dépassée !";
         String body = "Bonjour " + user.getName() + " " + user.getLastName() + ", "
-                + newLine + newLine +"La date de fin de vos emprunts est dépasée pour le ou les ouvrage(s) suivant : "
+                + newLine + newLine +"La date de fin de vos emprunts est dépasée pour le ou les ouvrage(s) suivant(s) : "
                 + newLine + listeDesEmprunts
                 + newLine + "Pour ne pas pénaliser les autres usagers, nous vous demandons de les restituer dans les meilleurs délais."
                 + newLine + newLine + "Votre bibliothèque municipale";
