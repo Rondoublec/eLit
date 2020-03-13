@@ -35,6 +35,8 @@ L'application est livrée avec 2 configurations
 - **prod** avec une base de données PostgreSQL à peupler. Lors du 1er lancement pour créer le modèle il faut mettre à **creat-drop** le paramètre spring.jpa.hibernate.ddl-auto dans le fichier application.properties correspondant.
 Pour conserver le contenu aux lancements suivants positionnez à **update** la valeur de ce paramètre.
 *Vous devez tout de même au préalable avoir créé la base de données avec son compte de propriétaire -> ces informations seront à mettre à jour dans le fichier application.properties correspondant à la configuration de l'application.*
+- Les durées standards d'emprunt et de prolongation sont paramétrées dans le **application.properties** (par défaut 28 jours)
+
 
 **Logs :** Par défaut le niveau de log est positionné à "INFO", les logs sont quotidiens (hordatés) et se trouvent dans le répèrtoire **logs**, tous ces paramétrages sont dans le fichier **src\main\resources\logback.xml**
 

@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class ElitApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void testRien() {
 	}
 
 }

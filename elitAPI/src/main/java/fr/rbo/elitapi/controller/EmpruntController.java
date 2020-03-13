@@ -12,6 +12,7 @@ import fr.rbo.elitapi.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,6 +29,11 @@ import java.util.Optional;
 @RestController
 public class EmpruntController {
     private static final Logger LOGGER = LoggerFactory.getLogger(EmpruntController.class);
+
+    @Value("${emprunt.duree.initiale}")
+    private int empruntDureeInitiale;
+    @Value("${emprunt.duree.prolongation}")
+    private int empruntDureeProlongation;
 
     @Autowired
     EmpruntRepository empruntRepository;
@@ -95,7 +101,7 @@ public class EmpruntController {
         if (null != emprunt.getEmpruntDateRetour()) {
             throw new NotAcceptableException("Prolongation impossible, ouvrage déjà rendu");
         }
-        emprunt.setEmpruntDateProlongation(dateFinPeriode(emprunt.getEmpruntDateFin(),28));
+        emprunt.setEmpruntDateProlongation(dateFinPeriode(emprunt.getEmpruntDateFin(),empruntDureeInitiale));
         emprunt.setEmpruntProlongation(true);
         empruntRepository.save(emprunt);
         return emprunt;
@@ -123,7 +129,7 @@ public class EmpruntController {
         emprunt.setUser(user);
         emprunt.setOuvrage(ouvrage);
         emprunt.setEmpruntDateDebut(Calendar.getInstance().getTime());
-        emprunt.setEmpruntDateFin(dateFinPeriode(emprunt.getEmpruntDateDebut(),28));
+        emprunt.setEmpruntDateFin(dateFinPeriode(emprunt.getEmpruntDateDebut(),empruntDureeInitiale));
         emprunt.setEmpruntProlongation(false);
         emprunt.setEmpruntRelance(false);
         emprunt.setEmpruntRendu(false);
@@ -139,7 +145,7 @@ public class EmpruntController {
     public Emprunt majOrUpdateEmprunt (@RequestBody Emprunt emprunt){
         LOGGER.debug("Post /emprunt/upsert");
         emprunt.setEmpruntDateDebut(Calendar.getInstance().getTime());
-        emprunt.setEmpruntDateFin(dateFinPeriode(emprunt.getEmpruntDateDebut(),28));
+        emprunt.setEmpruntDateFin(dateFinPeriode(emprunt.getEmpruntDateDebut(),empruntDureeInitiale));
         empruntRepository.save(emprunt);
         return emprunt;
     }

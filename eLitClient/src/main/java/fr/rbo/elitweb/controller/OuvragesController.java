@@ -83,7 +83,7 @@ public class OuvragesController {
         return "details-ouvrage";
     }
 
-    private BibliothequeBean choixBibliotheque() {
+    protected BibliothequeBean choixBibliotheque() {
         BibliothequeBean bibliothequeChoisie = new BibliothequeBean();
         LOGGER.debug("choixBibliotheque");
         try {

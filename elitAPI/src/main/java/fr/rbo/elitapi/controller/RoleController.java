@@ -32,7 +32,7 @@ public class RoleController {
     }
 
     /**
-     * renvoie le role correspondant au role demandé
+     * renvoie le role correspondant au role demandé pour vérifier son existance
      * @param role recherché
      * @return role correspondant au role demandé
      */

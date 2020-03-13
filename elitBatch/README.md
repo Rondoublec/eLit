@@ -6,9 +6,12 @@ Il s'agit du 7eme projet du cursus Développeur d'application Java proposé par 
 Développé par Rémy Bourdoncle. 
 
 ### Contenu
-A une fréquence quotidienne (paramétrable).  
+A une fréquence déterminée.  
 Ce traitement recherche les ouvrages non restitués par adhérents, et dont la date de restitution est dépasée.  
-Et envoi à chaque adhérent concerné un eMail lui rapelant la liste des ouvrage pour lesquels il est en retard de restitution.
+Et envoi à chaque adhérent concerné un eMail lui rapelant la liste des ouvrage pour lesquels il est en retard de restitution.  
+
+La fréquence de déclenchement du traitement est paramétrée dans le fichier **application.properties** au niveau du paramètre **batch.cron.value** elle est pour les besoin de tests parametré à 2 minutes 0 */2 * ? * *.  
+Pour une fréquence quotidienne, à 23 heure du lundi au vendredi il faut mettre  **&nbsp;0 0 23 * * 0-4&nbsp;**.
 
 ### Pré-requis technique  
 Version de Java : 1.8  
@@ -19,9 +22,10 @@ Maven 3.6
 la javadoc peut être consultée en lançant le fichier **docs\index.html**  
 
 ##Installation et déploiement
-Packaging : **mvn clean package**  
-Lors de la build des tests automatisés sont lancés, ils nécessittent pour fonctionner que l'API soit en fonctionnement et que le serveur SMTP opérationel (pour vos tests vous pouvez utiliser http://nilhcem.com/FakeSMTP/).  
-Si vous ne voulez pas lancer les tests vous pouver packager avec le paramètre  
+Packaging : **mvn clean package**
+Vous pouvez activez des tests automatisés sur la build en décommentant les directives @Test   
+Ils nécessittent pour fonctionner que l'API soit en fonctionnement et que le serveur SMTP soit opérationel (pour vos tests vous pouvez utiliser http://nilhcem.com/FakeSMTP/).  
+Si par la suite vous ne voulez pas lancer les tests vous pouver packager avec le paramètre  
 **mvn clean package -DskipTests**  
 
 
