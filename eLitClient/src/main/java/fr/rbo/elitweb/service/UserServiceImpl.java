@@ -23,11 +23,11 @@ import java.util.Set;
 public class UserServiceImpl implements UserService, UserDetailsService {
     private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 
-    private final ClientAPIService clientService;
+    private final UserAPIService clientService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
-    public UserServiceImpl(@Lazy BCryptPasswordEncoder bCryptPasswordEncoder, ClientAPIService clientService) {
+    public UserServiceImpl(@Lazy BCryptPasswordEncoder bCryptPasswordEncoder, UserAPIService clientService) {
         this.clientService = clientService;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }

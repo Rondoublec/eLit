@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 import javax.validation.Valid;
 
 @Service
-public class ClientAPIService {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ClientAPIService.class);
+public class UserAPIService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserAPIService.class);
 
     @Autowired
     private APIProxy apiProxy;

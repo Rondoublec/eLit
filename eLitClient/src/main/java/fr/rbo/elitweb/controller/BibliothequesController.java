@@ -2,7 +2,6 @@ package fr.rbo.elitweb.controller;
 
 import fr.rbo.elitweb.beans.BibliothequeBean;
 import fr.rbo.elitweb.proxies.APIProxy;
-import fr.rbo.elitweb.service.ClientAPIService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
