@@ -6,14 +6,14 @@ Développé par Rémy Bourdoncle.
 
 
 ###Release 1.0
-Cette release 1.0 propose une site web à l'attention des adhérents des bilbliothèques municipales d'une ville pour rechercher des ouvrages et gérer leurs emprunts. Elles se compose de 3 modules :
+Cette release 1.0 propose une site web à l'attention des adhérents des bibliothèques municipales d'une ville pour rechercher des ouvrages et gérer leurs emprunts. Elles se compose de 3 modules :
  
 **eLitAPI** : il s'agit de l'API qui permet de gérer les objets et activités autour des ouvrages et emprunts.
 Elle permet de gérer : 
 - les comptes utilisateurs et leurs droits (création, consultation)
 - Les ouvrages (création, consultation, modification)
-- Les emprunts (création, consultation, modification, restitution, prolongation, suppression, selection des retards)
--> en complément, les actions de création d'emprun et restitution d'emprunt mettent à jour la quantité disponible d'un ouvrage 
+- Les emprunts (création, consultation, modification, restitution, prolongation, suppression, sélection des retards)
+-> en complément, les actions de création d'emprunt et restitution d'emprunt mettent à jour la quantité disponible d'un ouvrage 
 - Les bibliothèques (consultation)
 Toutes ces fonctionnalités, ne sont pas nécessaires pour la Release 1.0 mais le seront pour les prochaines release (client mobile, application de gestion à l'attention du personnel des bibliothèques, évolution futures).
 
@@ -36,4 +36,4 @@ Le site Web utilise l'API pour fonctionner (le site WEB peut être lancé sans A
 
 Le batch utilise l'API pour la récupération des informations et un serveur SMTP pour envoyer les eMails (dans le cadre du développement on peut utiliser une application gratuite comme fakeSMTP pour tester localement l'envoi de mails)
 
-L'API est securisée par une BasicAuth et l'application WEB est sécurisée par utilisateurs.
+L'API est sécurisée par une BasicAuth et l'application WEB est sécurisée par utilisateurs.
