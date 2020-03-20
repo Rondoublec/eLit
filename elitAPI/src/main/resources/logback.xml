@@ -24,7 +24,7 @@
 
 <!--
     <root>
-&lt;!&ndash;        <level value="INFO" />&ndash;&gt;
+        <level value="INFO" />
         <level value="DEBUG" />
         <appender-ref ref="console" />
         <appender-ref ref="rollingFile" />
@@ -39,6 +39,5 @@
                 <appender-ref ref="console" />
                 <appender-ref ref="rollingFile" />
             </root>
-     -->
 
 </configuration>

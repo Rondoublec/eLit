@@ -101,7 +101,12 @@ public class EmpruntController {
         if (null != emprunt.getEmpruntDateRetour()) {
             throw new NotAcceptableException("Prolongation impossible, ouvrage déjà rendu");
         }
-        emprunt.setEmpruntDateProlongation(dateFinPeriode(emprunt.getEmpruntDateFin(),empruntDureeInitiale));
+        Date dateNow = Calendar.getInstance().getTime();
+        Date dateProlongation = dateFinPeriode(emprunt.getEmpruntDateFin(),empruntDureeInitiale);
+        if (dateNow.after(dateProlongation)) {
+            emprunt.setEmpruntRelance(true);
+        }
+        emprunt.setEmpruntDateProlongation(dateFinPeriode(emprunt.getEmpruntDateFin(), empruntDureeInitiale));
         emprunt.setEmpruntProlongation(true);
         empruntRepository.save(emprunt);
         return emprunt;
@@ -208,7 +213,9 @@ public class EmpruntController {
         LOGGER.debug("Get /emprunt/enretard/{id} " + id);
         User userRecherche = userRepository.findById(id).orElseThrow(() ->
                 new NotFoundException("Utilisateur inexistant"));
-        List<Emprunt> emprunts = empruntRepository.findAllByUserAndEmpruntDateFinIsBeforeAndEmpruntDateProlongationIsNullAndEmpruntDateRetourIsNullOrEmpruntDateProlongationIsNotNullAndEmpruntDateProlongationIsBeforeAndEmpruntDateRetourIsNull(userRecherche, new Date(), new Date());
+        List<Emprunt> emprunts = empruntRepository.findAllByUserAndEmpruntDateFinIsBeforeAndEmpruntDateProlongationIsNullAndEmpruntDateRetourIsNull(userRecherche, new Date());
+        emprunts.addAll(empruntRepository.findAllByUserAndEmpruntDateProlongationIsBeforeAndEmpruntDateRetourIsNull(userRecherche, new Date()));
+        LOGGER.debug("emprunts " + emprunts.size());
         if (emprunts.isEmpty()) throw new NotFoundException("Aucun emprunt en retard");
         return emprunts;
     }
