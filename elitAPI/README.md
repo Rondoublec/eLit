@@ -1,4 +1,4 @@
-# eLitAPI : API des bibliothéques municipales de Nîmes
+# eLitAPI : API des bibliothèques municipales de Nîmes
 API de gestion de bibliothèques.
 
 ### Contexte  
@@ -9,7 +9,7 @@ Développé par Rémy Bourdoncle.
 ### Contenu
 Cette API gère les comptes utilisateurs, les ouvrages et les emprunts
 
-### Pré-requis technique  
+### Prérequis techniques 
 Version de Java : 1.8  
 JDK : jdk1.8.0_191  
 Maven 3.6  
@@ -18,7 +18,7 @@ PostgresSQL
 
 ### Documentation
 http://localhost:8088/swagger-ui.html  
-la javadoc peut être consultée en lançant le fichier **docs\index.html**  
+La JavaDoc peut être consultée en lançant le fichier **docs\index.html**  
 
 ##Installation et déploiement
 Packaging : **mvn clean package**
@@ -38,7 +38,7 @@ Pour conserver le contenu aux lancements suivants positionnez à **update** la v
 - Les durées standards d'emprunt et de prolongation sont paramétrées dans le **application.properties** (par défaut 28 jours)
 
 
-**Logs :** Par défaut le niveau de log est positionné à "INFO", les logs sont quotidiens (hordatés) et se trouvent dans le répèrtoire **logs**, tous ces paramétrages sont dans le fichier **src\main\resources\logback.xml**
+**Logs :** Par défaut le niveau de log est positionné à "INFO", les logs sont quotidiens (horodatés) et se trouvent dans le répertoire **logs**, tous ces paramétrages sont dans le fichier **src\main\resources\logback.xml**
 
 Sources disponibles sur : https://github.com/Rondoublec/eLit-V2  
 La partie API est sous :  https://github.com/Rondoublec/eLit-V2/tree/master/elitAPI
