@@ -1,4 +1,4 @@
-# eLit-V2
+# eLit-V1
 
 ### Contexte  
 Il s'agit du 7eme projet du cursus Développeur d'application Java proposé par OpenClassrooms **Développez le nouveau système d’information de la bibliothèque d’une grande ville (Front / API / Batch)** .  
