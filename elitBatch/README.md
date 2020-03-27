@@ -33,5 +33,5 @@ Pour déclencher le traitement, aller dans target et lancer le jar avec la comma
 
 **Logs :** Par défaut le niveau de log est positionné à "INFO", les logs sont quotidiens (horodatés) et se trouvent dans le répertoire  **logs**, tous ces paramétrages sont dans le fichier **src\main\resources\logback.xml**
 
-Sources disponibles sur : https://github.com/Rondoublec/eLit-V2  
-La partie front est sous : https://github.com/Rondoublec/eLit-V2/tree/master/elitBatch
+Sources disponibles sur : https://github.com/Rondoublec/eLit-V1  
+La partie front est sous : https://github.com/Rondoublec/eLit-V1/tree/master/elitBatch
