@@ -27,5 +27,5 @@ Le port de l'Application est paramétré dans application.propertie  : `http://l
 **Logs :** Par défaut le niveau de log est positionné à "INFO", les logs sont quotidiens (horodatés) et se trouvent dans le répertoire **logs**, tous ces paramétrages sont dans le fichier **src\main\resources\logback.xml**
 
 
-Sources disponibles sur : https://github.com/Rondoublec/eLit-V2  
-La partie front est sous :  https://github.com/Rondoublec/eLit-V2/tree/master/eLitClient
+Sources disponibles sur : https://github.com/Rondoublec/eLit-V1  
+La partie front est sous :  https://github.com/Rondoublec/eLit-V1/tree/master/eLitClient
