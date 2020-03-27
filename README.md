@@ -37,3 +37,4 @@ Le site Web utilise l'API pour fonctionner (le site WEB peut être lancé sans A
 Le batch utilise l'API pour la récupération des informations et un serveur SMTP pour envoyer les eMails (dans le cadre du développement on peut utiliser une application gratuite comme fakeSMTP pour tester localement l'envoi de mails)
 
 L'API est sécurisée par une BasicAuth et l'application WEB est sécurisée par utilisateurs.
+

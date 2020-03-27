@@ -35,3 +35,4 @@ Pour déclencher le traitement, aller dans target et lancer le jar avec la comma
 
 Sources disponibles sur : https://github.com/Rondoublec/eLit-V1  
 La partie front est sous : https://github.com/Rondoublec/eLit-V1/tree/master/elitBatch
+
